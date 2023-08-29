@@ -52,21 +52,57 @@
 ## DDD&MVC
 # 6.架构设计
 
+架构设计三原则、简单、合适、演化。**面向复杂度设计**
+
 ## 微服务
 
 ## 分布式理论
 
+BASE、CAP、ACID、FLP
+
+两将军-> 拜占庭将军、数据一致性
+
+![img](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E/assets/8958a432f32dd742b6503b60f97cc3f2.png)
+
 ## 共识算法
+
+Paxos、Raft、ZAB、Gossip
 
 ## 分布式计算
 
 ## 分布式存储
 
+分布式ID
+
+分片、复制、
+
+事务(2PC、TCC、3PC、XA)
+
+分布式锁(Redis、ZK、MySQL)
+
+一致性与共识
+
 ## 高性能架构
+
+![img](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E/assets/a9edeae125a80f381003d8d9d0056317.png)
 
 ## 高可用架构
 
+![img](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E/assets/befd21e1b41a257c5028f8c1bc7fa279.png)
+
+接口级别：限流、降级、排队、熔断、
+
+超时重试&幂等
+
+异地多活：同城多机房、跨城多机房、跨国数据中心
+
+存储高可用：复制（主从、主备、主主）
+
+计算高可用：负载均衡、任务分配、任务分解
+
 ## 可拓展架构
+
+分层、SOA、微服务、微内核
 
 ## 性能调优
 
