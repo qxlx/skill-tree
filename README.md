@@ -13,7 +13,6 @@
 - PCB
 - 进程状态
 - 调度算法
-- ![image](https://github.com/qxlx/skill-tree/assets/36980092/df11e9cd-d3e5-4e49-93d8-4b72de63e0d2)
 
 
 内存管理
@@ -167,6 +166,8 @@ SOLID,DRP
 架构设计三原则、简单、合适、演化。**面向复杂度设计**
 ![img](https://img-blog.csdnimg.cn/a2e7e82a740c49d79c0d5f1d50cae3d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXhseGk=,size_20,color_FFFFFF,t_70,g_se,x_16)
 ![img](https://img-blog.csdnimg.cn/2ab8c7fae2894781899ceac595beec6e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXhseGk=,size_20,color_FFFFFF,t_70,g_se,x_16)
+- ![image](https://github.com/qxlx/skill-tree/assets/36980092/df11e9cd-d3e5-4e49-93d8-4b72de63e0d2)
+![image](https://github.com/qxlx/skill-tree/assets/36980092/b86f37cf-5a9f-4d37-a4e7-cab9bd595395)
 
 ## 微服务
 
