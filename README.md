@@ -13,6 +13,8 @@
 - PCB
 - 进程状态
 - 调度算法
+- ![image](https://github.com/qxlx/skill-tree/assets/36980092/df11e9cd-d3e5-4e49-93d8-4b72de63e0d2)
+
 
 内存管理
 
