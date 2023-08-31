@@ -162,6 +162,7 @@ SOLID,DRP
 # 六.架构设计
 
 架构设计三原则、简单、合适、演化。**面向复杂度设计**
+![img](https://img-blog.csdnimg.cn/a2e7e82a740c49d79c0d5f1d50cae3d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXhseGk=,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ## 微服务
 
