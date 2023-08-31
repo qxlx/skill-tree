@@ -142,9 +142,15 @@ ACID、三范式
 ## 消息队列
    Kafka
    RabbitMQ
-## 搜索引擎
+## 搜索引擎 
+   ES
 ## 配置中心/定时
+   Apollo
+   XDmond
+   XXL-JOB
 ## 监控/报警/日志/链路
+   FalCon
+   
 # 五.软件设计
 ## 编程范式
 ## 规范&重构
