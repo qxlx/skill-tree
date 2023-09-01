@@ -152,7 +152,7 @@ ACID、三范式
    XXL-JOB
 ## 监控/报警/日志/链路
    FalCon
-   
+
 # 五.软件设计
 ## 编程范式
 ## 规范&重构
@@ -244,9 +244,11 @@ Paxos、Raft、ZAB、Gossip
 
 ## Spark\Filnk
 
+# 十.其他领域
+
+## 区块链
 
 
-# 十.资料
 
      操作系统
        https://segmentfault.com/a/1190000039774784 从根上理解用户态与内核态
