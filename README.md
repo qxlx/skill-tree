@@ -238,7 +238,8 @@ Paxos、Raft、ZAB、Gossip
 ## Jenkins
 
 # 九.大数据
-
+  实时计算
+  离线计算
 ## Hadoop
 
 ## Spark\Filnk
