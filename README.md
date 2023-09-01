@@ -67,29 +67,59 @@
 - 网络分层结构
 - 常见网络协议
 
-HTTP
+物理层链路层
 
-PING
+- MAC
+- 交换机与VlAN
+- ICMP与PING
+- 网关
+- 路由协议
 
-DNS
+传输层
 
-TCP&UDP
+- TCP
+- UDP
+- 套接字Socket
 
-IP
+应用层
 
-ARP
+- HTTP
+- HTTPS
+- 流媒体
+- P2P
+
+数据中心
+
+- DNS
+- HTTPDNS
+- CDN
+- 数据中心
+- VPN
+- 移动网络
+
+云计算网络
+
+容器网络
 
 ## 数据库
 
 ACID、三范式
-   索引
-   锁
-   事物、隔离级别
-   存储引擎
-   日志
- SQL优化
- 读写分离（主从复制）
- 分库分表
+
+索引
+
+锁
+
+事物和隔离级别
+
+存储引擎
+
+日志
+
+SQL优化
+
+读写分离（主从复制）
+
+分库分表
 
 高可用
 
@@ -112,19 +142,60 @@ ACID、三范式
 ## 数据结构与算法
    数据结构：数组、链表、栈和队列、树、哈希表
    算法
+
 ## 软件工程
 ## Linux 
 ## 程序员素养/数学
 ## 密码学
 # 二.编程语言
 ## Java
+
+集合类
+
+字符串
+
+OOP
+
+关键字
+
+异常
+
+IO
+
+范型
+
+反射
+
+序列化
+
+java8
+
+注解
+
+枚举
+
 ## Go
 ## python
 ## JVM
+
+类加载器/流程
+
+字节码技术
+
+JVM对象分配回收策略
+
+运行时数据区
+
+垃圾回收算法
+
+垃圾收集器
+
+JVM调优
+
 ## 并发编程
-   进程&线程 
-   线程通信
-   threadlocal原理，应用场景
+进程&线程 
+线程通信
+threadlocal原理，应用场景
 
 ## 网络编程
 
@@ -132,26 +203,46 @@ ACID、三范式
 ## web框架
 ## ORM
 ## Spring
+
+Spring三级缓存
+
+Bean生命周期
+
+bean初始化流程
+
+AOP原理
+
+Spring MVC原理
+
 ## Spring-cloud
 
 # 四.中间件
 ## RPC/注册中心
+
+Zookeeper
+
 ## 网关/代理
+
+Nginx
+
 ## NoSQL
 ## 缓存
-   Redis
+### Redis
 
 ## 消息队列
-   Kafka
-   RabbitMQ
+### Kafka
+### RabbitMQ
+
 ## 搜索引擎 
-   ES
+ ### ES
+
 ## 配置中心/定时
-   Apollo
-   XDmond
-   XXL-JOB
+### Apollo
+### XDmond
+### XXL-JOB
+
 ## 监控/报警/日志/链路
-   FalCon
+### FalCon
 
 # 五.软件设计
 ## 编程范式
@@ -160,6 +251,9 @@ ACID、三范式
 SOLID,DRP
 ## 设计模式
 ## 源码解析
+
+TomCat源码解析
+
 ## DDD&MVC
 # 六.架构设计
 
@@ -173,15 +267,33 @@ SOLID,DRP
 
 ## 分布式理论
 
-BASE、CAP、ACID、FLP
+BASE
 
-两将军-> 拜占庭将军、数据一致性
+CAP
+
+ACID
+
+FLP
+
+两将军
+
+拜占庭将军
+
+数据一致性
 
 ![img](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E/assets/8958a432f32dd742b6503b60f97cc3f2.png)
 
 ## 共识算法
 
-Paxos、Raft、ZAB、Gossip
+一致性与共识
+
+Paxos
+
+Raft
+
+ZAB
+
+Gossip
 
 ## 分布式计算
 
@@ -189,13 +301,22 @@ Paxos、Raft、ZAB、Gossip
 
 分布式ID
 
-分片、复制、
+分片
 
-事务(2PC、TCC、3PC、XA)
+复制
 
-分布式锁(Redis、ZK、MySQL)
+事务
 
-一致性与共识
+- 2PC
+- TCC
+- 3PC
+- XA
+
+分布式锁
+
+- Redis
+- ZK
+- MySQL
 
 ## 高性能架构
 
@@ -217,7 +338,13 @@ Paxos、Raft、ZAB、Gossip
 
 ## 可拓展架构
 
-分层、SOA、微服务、微内核
+分层
+
+SOA
+
+微服务
+
+微内核
 
 ## 性能调优
 
