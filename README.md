@@ -146,15 +146,53 @@ SQL优化
 
 链表
 
+- 跳表
+
 栈
+
+- 单调栈
 
 队列
 
 树
 
+- BST
+- Trie
+- 红黑树
+- B树
+- B+树
+
 哈希表
 
+字符串
+
+图
+
+布隆过滤器
+
+堆
+
 ### 算法
+
+排序
+
+- 快排
+
+二分
+
+搜索
+
+- BSF
+- DFS
+- 回遡
+
+贪心算法
+
+动态规划
+
+位运算
+
+双指针
 
 ## 软件工程
 ## Linux 
@@ -210,8 +248,36 @@ JVM调优
 
 - 进程&线程
 - 线程状态 
+- 线程创建
 
-线程通信
+互斥同步
+
+- synchronized
+  - 锁升级
+- ReentrantLock
+
+线程协作/通信
+
+- join
+- wait/notify/notifyAll
+- awit/singal/singalAll
+- LockSupport
+
+AQS
+
+工具类
+
+- CountDownLatch
+- CyclicBarrier
+- Semaphore
+
+JMM
+
+线程安全
+
+锁
+
+线程池原理
 
 threadlocal原理，应用场景
 
