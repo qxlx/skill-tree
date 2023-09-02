@@ -212,9 +212,21 @@ bean初始化流程
 
 AOP原理
 
+IOC原理
+
 Spring MVC原理
 
+Spring中设计模式
+
 ## Spring-cloud
+
+Nacos
+
+OpenFeign
+
+Gateway
+
+sentinel
 
 # 四.中间件
 ## RPC/注册中心
@@ -229,8 +241,98 @@ Nginx
 ## 缓存
 ### Redis
 
+![](https://img-blog.csdnimg.cn/a0b5b20bd1224d06814f1410019461c8.png)
+
+Redis基本命令
+
+底层数据结构
+
+Redis高性能IO模型
+
+IO多路复用
+
+持久化
+
+- AOF
+- RDB
+
+双写一致性
+
+雪崩、击穿、穿透、预热
+
+布隆过滤器
+
+分布式锁
+
+高可用
+
+Redis数据同步、复制
+
+Redis哨兵机制
+
+Redis哨兵集群
+
+Redis切片集群
+
 ## 消息队列
+
+消息队列作用
+
+- 异步、削峰、解耦、提升写性能
+
+带来的问题
+
+- 消息延迟、系统的复杂度、数据不一致（消息顺序、消息丢失、重复消费、消息挤压、高可用、高性能）
+
 ### Kafka
+
+Kafka基础架构
+
+- Broker->Topic->Partition->Partition Leader-> Partition Follower 
+- 部署架构：单机模式/集群模式
+
+分区机制
+
+- 作用提升负载均衡、可伸缩能力、提升系统处理写性能
+- 策略：随机、轮询、按消息键保序、其他策略
+
+消息挤压如何处理
+
+- 优化性能避免消息挤压
+  - 发送端性能优化
+    - 准备数据、序列化数据、之前的耗时
+    - 发送消息和返回响应网络传输中的耗时
+    - Broker处理消息的时延
+  - 消费端性能优化
+    - 优化消费端程序业务逻辑性能
+    - 水平扩容，增加消费端并发数据。加机器，分区。
+- 发送快了，消费变慢了
+  - 监控、紧急消费端扩容、关闭上游系统功能、错误日志、同一条消息反复消费，拖垮整个系统
+
+消息重复消费
+
+- 生产者幂等、消费者幂等
+
+消息可靠传输
+
+- 发送、存储、消费三个阶段
+
+生产者消费流程
+
+Kafka如何实现高性能
+
+- 批量发送、顺序读写提升磁盘IO性能、PageCache加速消息读写、零拷贝技术
+
+**Kafka消费者分区分配和重平衡 ⭐️**
+
+消费者位移
+
+副本机制
+
+Kafka多线程消费
+
+Kafka高水位和Leader Epoch原理
+
 ### RabbitMQ
 
 ## 搜索引擎 
@@ -356,26 +458,51 @@ SOA
 
 # 八.云原生
 
-## docker
+## CI/CD
 
-## k8s
+软件生命周期
+
+CI/CD
+
+Jenkins
 
 ## DevOps
 
-## Jenkins
+## docker
+
+虚拟化/容器化
+
+基础命令
+
+镜像
+
+compose
+
+container
+
+network
+
+image
+
+volume
+
+swarm
+
+## k8s
+
+
 
 # 九.大数据
   实时计算
   离线计算
+
 ## Hadoop
 
 ## Spark\Filnk
 
 # 十.其他领域
 
-## 区块链
-
-
+## 区块链              
 
      操作系统
        https://segmentfault.com/a/1190000039774784 从根上理解用户态与内核态
