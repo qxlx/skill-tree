@@ -269,6 +269,12 @@ JVM调优
 
 AQS
 
+- AQS源码解析整体流程
+
+  大概的整体流程是这样的，首先，我们创建三个线程A,B,C。线程A先拿到锁，执行任务。 而B、C一直获取不到锁，不能执行任务。被park。等A指向完毕之后，unpark(B);
+
+  lock.lock() 线程A通过CAS 设置上锁。而等线程B去获取锁的时候，CAS获取不到锁。于是进入acquire(1)进入nonfairTryAcquire 再次尝试获取锁，获取不到、直接返回 false。进入addWaiter()将当前节点添加到队列中enq(node)，因为t==null ，所以先创建一个哨兵结点。然后第二次自旋，将当前节点Node(ThreadB)，添加到队列中。调用 acquireQueued() ，拿到当前节点的前置节点。第三次获取，获取不到。进入 park() 等待。等待线程释放锁， unpark() 操作。而在此时，线程A执行任务完毕，进行 lock.unlock() 操作。执行 release(1) ,通过head节点将下一个节点进行 unpark() 操作。而因为线程B被park()了，所以下一次就可以获取到锁，将队列中的哨兵结点进行修改。
+
 工具类
 
 - CountDownLatch
