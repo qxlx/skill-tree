@@ -257,7 +257,9 @@ JVM调优
 互斥同步
 
 - synchronized
-  - 锁升级
+  - 锁升级 & mark word 
+    - 无锁->偏向锁->轻量级锁->重量级锁
+    - 本质：因避免无效的锁竞争，提升整体的并发性能。
 - ReentrantLock
 
 线程协作/通信
@@ -280,6 +282,9 @@ AQS
 - CountDownLatch
 - CyclicBarrier
 - Semaphore
+- Future
+- CompletableFuture
+  - 异步编程+回调
 
 JMM
 
@@ -289,7 +294,11 @@ JMM
 
 线程池原理
 
-threadlocal原理，应用场景
+threadlocal原理
+
+- 原理 ：**线程间变量隔离**
+
+  为了解决线程内数据跨方法类的调用，使用类threadlocal，具体就是thread包含一个threadlocal，而threadlocal内部包含一个threadlocalMap对象。key为this (threadlocal) vaule为对应的值。为了保证引用可以被删一个是程序内部使用弱引用，而是通过程序员remove（）进行维护删除，以及来保证内存泄露。
 
 ## 网络编程
 
@@ -298,7 +307,14 @@ threadlocal原理，应用场景
 ## ORM
 ## Spring
 
-Spring三级缓存
+Spring循环依赖
+
+- 循环依赖是在SpringBean初始化声明周期而产生的问题
+
+  整体流程，其实就是A创建的过程中需要B，所以将A对象自己放入三级缓存中，然后去实例化B。
+  2.B在实例化的时候，发现自己引用了属性A，所以从三级缓存中依此查询，查询一级缓存没有，在查询二级缓存也没有，发现三级缓存有，将A从三级缓存放入二级缓存，并将三级缓存中的A删除。
+  3.B创建完毕之后，将自己放入一级缓存中。然后A接着创建，直接从一级缓存中获取B。A创建完成，将自己放入一级缓存中。
+  整个过程其实就是依赖于如果发现是循环依赖的话，通过将对象提前暴露出来，存储缓存中，并且scope=singleton。所以可以解决这个问题。
 
 Bean生命周期
 
