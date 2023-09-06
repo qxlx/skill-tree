@@ -221,16 +221,24 @@ LRU
 ## 软件工程
 ## Linux 
 
+目录操作
 
+- cd / pwd / open / mkdir / rmdir / ls 
 
-文本查看
+文本操作
 
 - cat、head、tail、less、more、wc -l  查看文件行数
+- vim 、rm -rf、find、
 
-用户切换
+系统管理
 
 - su - 切换用户  
 - sudo 以其他用户身份执行命令
+- kill -9 杀死进程
+
+系统资源查询
+
+- ps、ps -ef、netstat、df 、top、free
 
 ## 程序员素养/数学
 ## 密码学
