@@ -462,6 +462,8 @@ BIO：**BIO的特点就是在IO执行的两个阶段都被block了。**
 NIO：**NIO特点是用户进程需要不断的主动询问内核数据准备好了吗？一句话，用轮询替代阻塞！**
 
 IO多路复用 
+![image](https://github.com/qxlx/skill-tree/assets/36980092/22a9b41f-9834-4199-9f7e-f7cf3d417214)
+
 
 信号驱动IO
 
