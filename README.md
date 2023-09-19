@@ -117,6 +117,13 @@
 
 文件系统
 
+- 索引节点（数据的元信息）、目录项（文件系统树结构）
+- VFS 为了支持各种不同的文件系统，Linux 内核在用户进程和文件系统的中间，又引入了一个抽象层，也就是虚拟文件系统 VFS（Virtual File System）。
+- 缓存
+  - 索引节点缓存、目录项缓存、页缓存、标准库缓存
+- 磁盘
+  - 超级块、索引节点区、数据块区
+
 - 硬连接、软链接
 - 磁盘调度算法
 - 文件系统有自己的索引、文件缓存、文件数据结构、文件描述符
@@ -338,6 +345,10 @@ LRU Cache
 - ps、ps -ef、pstree、netstat、df 、top、free
 - free
   - cache是对文件系统的缓存、buffer是对磁盘的缓存。
+- df -i  索引节点磁盘空间
+  - cat /proc/meminfo | grep -E "SReclaimable|Cached"  
+  - slabtop 
+
 
 进程管理
 
