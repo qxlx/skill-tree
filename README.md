@@ -116,6 +116,7 @@
   -  **LRU** 算法				 		
 
 文件系统
+<img width="517" alt="image" src="https://github.com/qxlx/skill-tree/assets/36980092/999991f2-d82b-454f-ab45-fcbfa98f30f1">
 
 - 索引节点（数据的元信息）、目录项（文件系统树结构）
 - VFS 为了支持各种不同的文件系统，Linux 内核在用户进程和文件系统的中间，又引入了一个抽象层，也就是虚拟文件系统 VFS（Virtual File System）。
