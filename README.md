@@ -123,6 +123,7 @@
   - 索引节点缓存、目录项缓存、页缓存、标准库缓存
 - 磁盘
   - 超级块、索引节点区、数据块区
+- 文件系统，通用设块层、设备
 
 - 硬连接、软链接
 - 磁盘调度算法
@@ -343,6 +344,11 @@ LRU Cache
 系统资源查询
 
 - ps、ps -ef、pstree、netstat、df 、top、free
+- IO
+  - iostat -d -x 1  总体IO
+  - pidstat -d 1  进程IO
+  - iotop
+
 - free
   - cache是对文件系统的缓存、buffer是对磁盘的缓存。
 - df -i  索引节点磁盘空间
