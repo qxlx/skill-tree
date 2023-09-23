@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe17cc8a-7f5d-423a-85f9-b96442cb6147" name="Changes" comment="" />
+    <list default="true" id="fe17cc8a-7f5d-423a-85f9-b96442cb6147" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/算法之美.md" beforeDir="false" afterPath="$PROJECT_DIR$/算法之美.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

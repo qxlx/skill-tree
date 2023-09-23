@@ -257,6 +257,10 @@ SQL优化
 
 ## 数据结构与算法
 
+过遍数 
+
+1.理解题意 2.尽可能所有的解 3.测试 
+
 ![image](https://github.com/qxlx/skill-tree/assets/36980092/4685403b-fac4-4190-8081-f379221d4189)
 
 
@@ -321,6 +325,8 @@ LRU Cache
 贪心算法
 
 动态规划
+
+递归
 
 分治
 
@@ -417,6 +423,9 @@ JVM对象分配回收策略
 JVM调优
 
 ## 并发编程
+
+**分工、同步、互斥**
+
 并发基础
 
 - 进程&线程
@@ -440,7 +449,12 @@ JVM调优
 - join
 - wait/notify/notifyAll
 - awit/singal/singalAll
-- LockSupport
+- LockSupport park和unpark
+
+无锁编程
+
+- CAS、ABA
+  - 原子类 AtomicXXX
 
 AQS
 
@@ -461,7 +475,8 @@ AQS
 
 JMM
 
-线程安全
+- 可见行、有序性、原子性
+- HB规则、缓存结构、内存屏障
 
 锁
 
@@ -1223,3 +1238,8 @@ swarm
      操作系统
        https://segmentfault.com/a/1190000039774784 从根上理解用户态与内核态
 
+
+
+**极客时间看完->读经典书籍**
+
+- 
