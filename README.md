@@ -379,12 +379,18 @@ LRU Cache
   - iostat -d -x 1  总体IO
   - pidstat -d 1  进程IO
   - iotop
-
 - free
   - cache是对文件系统的缓存、buffer是对磁盘的缓存。
 - df -i  索引节点磁盘空间
   - cat /proc/meminfo | grep -E "SReclaimable|Cached"  
   - slabtop 
+- 系统上下文切换查看
+  - vmstat 5 //总体监控
+  - pidstat -w 5 //进程监控
+  - pidstat -w -u 1 //-w 参数表示输出进程切换指标，而 -u 参数则表示输出 CPU 使用指标
+  - pidstat -wt 1 // -wt 参数表示输出线程的上下文切换指标
+  - watch -d cat /proc/interrupts //内核中断指标
+  
 
 
 进程管理
