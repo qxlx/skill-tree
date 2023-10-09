@@ -418,6 +418,12 @@ LRU Cache
   - 非自愿上下文切换
 - 平均负载
 - CPU缓存命中率
+![image](https://github.com/qxlx/skill-tree/assets/36980092/9a1f076c-2887-460a-9996-7a402a6be081)
+
+![image](https://github.com/qxlx/skill-tree/assets/36980092/7a442828-0c07-4712-94e5-18a70718f3b8)
+
+![image](https://github.com/qxlx/skill-tree/assets/36980092/dda46b7b-34b6-4751-8813-b6e591441e47)
+
 
 ## 程序员素养/数学
 ## 密码学
