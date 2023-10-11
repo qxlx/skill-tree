@@ -460,6 +460,11 @@ LRU Cache
   - 剩余空间
   - 换入速度
   - 换出速度
+![image](https://github.com/qxlx/skill-tree/assets/36980092/fbf970e9-4639-49a5-94d9-9fb03862070b)
+
+![image](https://github.com/qxlx/skill-tree/assets/36980092/a966d0d5-438c-43be-81ad-2a5aaf0e7a5e)
+
+![image](https://github.com/qxlx/skill-tree/assets/36980092/0daad362-fe90-4446-8745-fbd4cc059d5b)
 
 ### IO
 
