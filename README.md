@@ -491,6 +491,15 @@ LRU Cache
     - 读写大小
     - 存储类型(Raid级别、本地、网络)
 
+![image](https://github.com/qxlx/skill-tree/assets/36980092/c1808a9a-d2ff-4226-9d1c-a3b35dc3bb7d)
+
+![image](https://github.com/qxlx/skill-tree/assets/36980092/63e11a70-f82c-416b-b638-c1c7c543814f)
+
+
+![image](https://github.com/qxlx/skill-tree/assets/36980092/3c3e8b1c-b4ac-47f2-936f-23f36f15591b)
+
+
+
 ### 网络
 
 ## 程序员素养/数学
