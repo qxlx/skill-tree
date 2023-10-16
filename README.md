@@ -213,6 +213,11 @@
 - HTTPS
 - 流媒体
 - P2P
+- DHCP
+  - Dynamic Host Configuration Protocol，动态主机配置协议）是一个局域网的网络协议，UDP协议，67号端口
+  - 作用就是动态分配IP地址
+  - 工作方式：发现->提供->请求->确认。
+
 
 数据中心
 
@@ -224,6 +229,9 @@
 - 移动网络
 
 云计算网络
+
+- PXE 
+  - 预启动执行环境（Pre-boot Execution Environment
 
 容器网络
 
