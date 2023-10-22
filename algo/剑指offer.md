@@ -500,7 +500,8 @@ space : O(n)
 
 ```java
    	static Map<Integer,Integer> result = new HashMap<>();
-    public static TreeNode buildTree(int[] preorder, int[] inorder) {
+    
+		public static TreeNode buildTree(int[] preorder, int[] inorder) {
         for(int i=0;i<inorder.length;i++){
             result.put(inorder[i],i);
         }
