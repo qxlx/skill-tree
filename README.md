@@ -238,6 +238,25 @@
 
 - TCP
   - 丢包、乱序、重传、拥塞
+    - 顺序问题、丢包问题、流量控制都是通过滑动窗口来解决的。
+    - 拥塞控制是通过拥塞窗口来解决的。（慢启动+拥塞避免  /快重传+快恢复）
+      - 拥塞窗口：这是发送端根据自己估计的网络拥塞程度而设置的窗口值，**是来自发送端的流量控制**。
+      - 防止过多的数据注入网络中，使得网络中的路由器或链路不至过载
+      - 慢启动
+        - 由小到大逐渐增加发送数据量 **发送端的拥塞窗口数值**，每收到一个报文确认，就加一。**指数级增加**
+        - 窗口 cwnd 的增长引起网络拥塞，还需要慢开始门限 ssthresh。
+        - 当 cwnd<ssthresh,使用慢开始算法; 当 cwnd>ssthresh,，使用拥塞避免算法；cwnd=ssthresh,既可用慢开始算法也可用拥塞避免算法。
+        - 无论是慢开始还是拥塞避免，只要发送端发现网络阻塞，就将慢开始门限设为出现拥塞时的发送窗口值的一半，然后拥塞窗口为一，并执行慢开始算法。这样做的目的是迅速减少主机发送到网络中的分组数，使得发生拥塞的路由器有足够时间把队列中积压的分组处理完毕
+      - 拥塞避免
+        - 当网络中的资源供应不足，网络的性能就要明显变坏，整个网络的吞吐量随之负荷的增大而下降，也就是说对资源的需求超过了可用的资源，因为传输数据是需要资源的。
+      - 快重传
+        - 快重传算法规定：发送端只要一连收到三个重复 ack，即可断定有分组丢失，就应该立即重传丢失的报文，而不需要等待为该报文设置的重传计时器超时。
+        - 与慢开始不同，拥塞窗口不设为 1，,而设为慢开始门限+3*mss（mss：最大报文段）。
+
+    - 流量控制和拥塞控制的理解吗？
+      - 流量控制考虑点对点的通信量的控制，也就是客户端和服务端直接数据传输数据量的大小。
+      - 拥塞控制考虑的问题是整个网络，是全局性的考虑。
+
   - 三次握手
   - 四次挥手
     - MSL
@@ -1110,7 +1129,26 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 ## 源码解析
 
+并发集合
+
+- hashmap
+- concurrenthashmap
+
 TomCat源码解析
+
+spring
+
+Spring mvc
+
+tomcat
+
+spting boot
+
+**netty**
+
+Dubbo
+
+kafka
 
 ## DDD&MVC
 # 六.架构设计
@@ -1118,6 +1156,7 @@ TomCat源码解析
 架构设计三原则、简单、合适、演化。**面向复杂度设计**
 ![img](https://img-blog.csdnimg.cn/a2e7e82a740c49d79c0d5f1d50cae3d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXhseGk=,size_20,color_FFFFFF,t_70,g_se,x_16)
 ![img](https://img-blog.csdnimg.cn/2ab8c7fae2894781899ceac595beec6e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXhseGk=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 - ![image](https://github.com/qxlx/skill-tree/assets/36980092/df11e9cd-d3e5-4e49-93d8-4b72de63e0d2)
 ![image](https://github.com/qxlx/skill-tree/assets/36980092/b86f37cf-5a9f-4d37-a4e7-cab9bd595395)
 
