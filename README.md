@@ -328,6 +328,9 @@
 
 - CDN
 
+  - 网络加速
+  - 边缘节点->区域节点->边缘节点
+
 - 数据中心
 
 - VPN
@@ -895,14 +898,31 @@ Spring循环依赖
 Bean生命周期
 
 - 动态注册bean的两种方式
-
-bean初始化流程
+- 实例化
+- 初始化-循环依赖
+- 使用
+- 销魂
 
 AOP原理
 
-IOC原理
+- AOP核心概念
+- 创建AOP准备工作
+- JDK动态代理原理
+- Cglib原理
+- AOP动态代理的实现流程
 
 事务原理
+
+IOC原理-刷新方法
+
+- 容器刷新前的准备工作
+- bean工厂的创建
+- 加载BeanDefinition
+- 执行BeanFactoryPostProcessor增强器
+- 进行国际化配置
+- 多播配置和监听器的初始化
+- 实例化bean对象
+- 实例化完成后的处理工作
 
 Spring MVC原理
 
@@ -1043,6 +1063,10 @@ Kafka高水位和Leader Epoch原理
 
 ### RabbitMQ
 
+Pulsar
+
+
+
 ## 搜索引擎 
  ### ES
 
@@ -1178,7 +1202,11 @@ TomCat源码解析
 
 spring
 
+
+
 Spring mvc
+
+mybaits
 
 tomcat
 
