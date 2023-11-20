@@ -1196,7 +1196,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 策略模式
 
-- 
+- 解决if、else
+- 定义、创建、使用
 
 职责链模式
 
