@@ -4,6 +4,7 @@
 
 Java 7 中 `ConcurrentHashMap` 的存储结构如上图，`ConcurrnetHashMap` 由很多个 `Segment` 组合，而每一个 `Segment` 是一个类似于 `HashMap` 的结构，所以每一个 `HashMap` 的内部可以进行扩容。但是 `Segment` 的个数一旦**初始化就不能改变**，默认 `Segment` 的个数是 16 个，你也可以认为 `ConcurrentHashMap` 默认支持最多 16 个线程并发
 
+![image](https://github.com/qxlx/skill-tree/assets/36980092/decef0bc-092b-49fe-b669-41633699287f)
 
 
 ### 2. 初始化
@@ -397,6 +398,7 @@ public V get(Object key) {
 
 可以发现 Java8 的 ConcurrentHashMap 相对于 Java7 来说变化比较大，不再是之前的 **Segment 数组 + HashEntry 数组 + 链表**，而是 **Node 数组 + 链表 / 红黑树**。当冲突链表达到一定长度时，链表会转换成红黑树。
 
+![image](https://github.com/qxlx/skill-tree/assets/36980092/4925a712-8760-4bc2-a7b5-66b54c626f6e)
 
 
 ### 2. 初始化 initTable
