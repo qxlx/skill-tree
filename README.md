@@ -15,13 +15,15 @@
 
 | 科目               | 进度 |
 | ------------------ | ---- |
-| MySQL              | ✅    |
-| Redis              | ✅    |
+| MySQL              | ✅✅✅  |
+| Redis              | ✅✅✅  |
 | Kafka              | ✅    |
 | 分布式系统         | ✅    |
 | 操作系统           | ✅    |
 | 网络               | ✅    |
-| JUC                | ✅    |
+| JUC                | ✅✅✅  |
+| Spring             | ✅✅✅  |
+| JVM                | ✅✅✅  |
 | 云原生             | ⭐️    |
 | 软件设计           |      |
 | 源码解析           |      |
@@ -713,6 +715,15 @@ JVM调优
 - xmx xms  年轻代 老年代比例
 - jps ->进程   jstat->信息 jinfo->配置 jmap->内存映像 jhat->堆转储 jstack->堆栈
 
+生产问题排查
+
+- 当一个Java程序响应很慢时如何查找问题、
+- 当一个Java程序频繁FullGC时如何解决问题、
+- 如何查看垃圾回收日志、
+- 当一个Java应用发生OutOfMemory时该如何解决、
+- 如何判断是否出现死锁、
+- 如何判断是否存在内存泄露
+
 **JVM总体流程为->类加载->运行时数据区创建->内存分配回收策略->GC算法->JVM调优**
 
 ## 并发编程
@@ -1219,16 +1230,44 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 ## 源码解析
 
-并发集合
+集合
+
+- ArrsyList
+- LinkedList
 
 - hashmap
 - concurrenthashmap
+- CopyOnWriteArrayList
+- LinkedHashMap
 
-TomCat源码解析
+线程池
+
+- ExecutorService
+- AbstractExecutorService
+- Executors
+- ScheduledThreadPoolExecutor
+- 队列
+  - ArrayBlockingQueue
+  - LinkedBlockingQueue
+  - SynchronousQueue
+
+AQS
+
+- ReentrantLock
+- Condition
+- CountDownLatch
+- CyclicBarrier
+- Semaphore
 
 spring
 
+- Bean加载
+- 事务
+- AOP
 
+spting boot
+
+- 自动装配
 
 Spring mvc
 
@@ -1236,9 +1275,7 @@ mybaits
 
 tomcat
 
-spting boot
-
-**netty**
+netty
 
 Dubbo
 
@@ -1645,7 +1682,7 @@ swarm
 
 ## 区块链     
 
-# 技术管理
+# 终极篇-技术管理
 
 ## 1.总体介绍
 

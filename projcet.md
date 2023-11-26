@@ -21,7 +21,7 @@
 
 todo
 
-
+线程池原理 & 源码解析
 
 本周
 
@@ -64,3 +64,11 @@ Kafka
 - 消息延迟和堆积
 
 网络
+
+
+
+JVM+并发+Spring+MySQL+Redis+Kafka
+
+
+
+云原生、了解
