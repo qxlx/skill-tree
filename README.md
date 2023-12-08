@@ -825,6 +825,8 @@ JMM
 线程池原理
 
 - 线程池原理，线程池组成，拒绝策略，线程池的工作原理，阻塞队列原理、执行流程
+- Future、Callable 带返回值的执行
+- 阻塞队列
 
 threadlocal原理
 
@@ -1235,41 +1237,49 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 - ArrsyList
 - LinkedList
 
-- hashmap
+- hashmap   ✅
 - concurrenthashmap
 - CopyOnWriteArrayList
 - LinkedHashMap
 
-线程池
+线程池  ❌
 
 - ExecutorService
 - AbstractExecutorService
 - Executors
 - ScheduledThreadPoolExecutor
-- 队列
+- 阻塞队列
   - ArrayBlockingQueue
   - LinkedBlockingQueue
+  - PriorityBlockingQueue
+  - DelayQueue
+  - LinkedTransferQueue
   - SynchronousQueue
 
 AQS
 
+- Synchroneized
 - ReentrantLock
+  - ReentrantReadWriteLock
 - Condition
 - CountDownLatch
 - CyclicBarrier
 - Semaphore
+- ThreadLocal
+
+异步编程
+
+- CompletableFuture
 
 spring
 
 - Bean加载
 - 事务
 - AOP
-
-spting boot
-
-- 自动装配
-
-Spring mvc
+- 三级缓存
+- Spring mvc
+- spting boot
+  - 自动装配
 
 mybaits
 
@@ -1280,6 +1290,8 @@ netty
 Dubbo
 
 kafka
+
+ZK
 
 ## DDD&MVC
 # 六.架构设计
