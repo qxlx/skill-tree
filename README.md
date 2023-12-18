@@ -25,8 +25,8 @@
 | Spring             | ✅✅✅  |
 | JVM                | ✅✅✅  |
 | 云原生             | ⭐️    |
-| 软件设计           |      |
-| 源码解析           |      |
+| 软件设计           | ⭐️    |
+| 源码解析           | ⭐️    |
 | 性能优化           | ⭐️    |
 | 算法               | ❎    |
 | Go、面试相关       |      |
@@ -797,6 +797,12 @@ AQS
 - CountDownLatch
 - CyclicBarrier
 - Semaphore
+  - AQS共享模式
+    - Semaphore的加锁解锁(共享锁)逻辑实现
+    - 线程竞争锁失败入队阻塞逻辑和获取锁的线程释放锁唤醒阻塞线程竞争锁的逻辑实现
+
+  - 限流使用
+
 - Future
 - CompletableFuture
   - 异步编程+回调
@@ -825,6 +831,8 @@ JMM
 线程池原理
 
 - 线程池原理，线程池组成，拒绝策略，线程池的工作原理，阻塞队列原理、执行流程
+- Future、Callable 带返回值的执行
+- 阻塞队列
 
 threadlocal原理
 
@@ -1232,42 +1240,52 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 集合
 
-- ArrsyList
+- ArrsyList 
 - LinkedList
 
-- hashmap
+- hashmap   ✅
 - concurrenthashmap
 - CopyOnWriteArrayList
 - LinkedHashMap
 
-线程池
+线程池  ❌
 
-- ExecutorService
-- AbstractExecutorService
-- Executors
-- ScheduledThreadPoolExecutor
-- 队列
-  - ArrayBlockingQueue
-  - LinkedBlockingQueue
+- ExecutorService ✅
+- AbstractExecutorService ✅
+- Executors ✅
+- ScheduledThreadPoolExecutor 
+- 阻塞队列
+  - ArrayBlockingQueue.   ✅
+  - LinkedBlockingQueue.  ✅
+  - PriorityBlockingQueue 
+  - DelayQueue
+  - LinkedTransferQueue
   - SynchronousQueue
 
 AQS
 
-- ReentrantLock
+- Synchroneized. ✅
+- ReentrantLock. ✅
+  - ReentrantReadWriteLock
 - Condition
 - CountDownLatch
 - CyclicBarrier
 - Semaphore
+- ThreadLocal
+
+异步编程
+
+- CompletableFuture
 
 spring
 
 - Bean加载
 - 事务
 - AOP
-
-spting boot
-
-- 自动装配
+- 三级缓存
+- Spring mvc
+- spting boot
+  - 自动装配
 
 Spring mvc
 
@@ -1280,6 +1298,8 @@ netty
 Dubbo
 
 kafka
+
+ZK
 
 ## DDD&MVC
 # 六.架构设计
