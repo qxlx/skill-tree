@@ -842,6 +842,29 @@ threadlocal原理
 
 为什么需要多线程->解决了那些问题-> 线程状态/创建 -> 如何保证数据的一致性(同步 syn lock/互斥/cas)-> 线程间通信(wait/notify threadlocal) ->相关锁机制 syn锁升级 ->线程工具类 aqs -> CAS/ABA -> JMM -> 线程池->线程停止
 
+并发设计模式
+
+- 终止线程设计模式
+  - 两阶段终止 
+    - 另外一个线程去判断，t.interted()
+- 避免共享的设计模式
+  - Immutability模式- final  (只读)
+  - Copy-on-write模式
+    - CopyOnWriteArrayList  
+  - Thread-Specific Storage模式-没有共享就没有伤害 
+    - ThreadLocal
+- 多线程版本的if模式
+  - Guarded Suspension模式
+    - 保护性暂停   Future.get() 等待
+  - Baliking模式-
+- 多线程分工模式
+  - Thread-per-Message 模式
+    - BIO 一个线程一个任务
+  - Worker Thread 
+    - 线程池模型
+  - 生产者-消费者模式
+    - 阻塞队列
+
 ## 网络编程
 
 同步：调用者需要等待函数的返回结果，才可以继续执行。
@@ -1205,6 +1228,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 享元模式
 
+- 
+
 ### 行为型
 
 观察者模式
@@ -1237,6 +1262,26 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 中介模式
 
 ## 源码解析
+
+> 为什么学习源码
+>
+> - 大厂面试问
+> - 提升阅读代码的功能、输出优质的代码、学习软件设计思想
+> - 提升技术功底
+> - 二次开发
+> - 快速定位线上问题
+> - 拥抱开源社区
+>
+> 前置基础知识
+>
+> - 设计模式、数据结构算法、反射、多线程
+>
+> 源码学习方式
+>
+> - 会使用、全局观、不要关注细节、看注释(类、方法、接口)、见名知意、大胆猜测、小心验证、画图、学习路径、坚持
+> - 推荐路径 集合、并发、spring、mvc、mybatis、boot、Alibaba、bio->netty->kafka
+
+
 
 集合
 
