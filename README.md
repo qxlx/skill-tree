@@ -1115,6 +1115,18 @@ Pulsar
 ## 配置中心
 
 ### Apollo
+
+- 部署架构
+  - Config Service提供配置的读取、推送等功能，服务对象是Apollo客户端。
+  - Admin Service提供配置的修改、发布等功能，服务对象是Apollo Portal（管理界面）。
+  - Config Service和Admin Service都是多实例、无状态部署，所以需要将自己注册到Eureka中并保持心跳。
+- 服务端设计
+  - 配置发布后的实时推送设计
+  - 发送ReleaseMessage的实现方式
+  - Config Service通知客户端的实现方式
+- 客户端设计
+  - 长连接
+
 ### XDmond
 ## 定时
 
@@ -1228,7 +1240,10 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 享元模式
 
-- 
+- 目的：复用对象，节省内存，对象不可变
+- 应用：Integer, Long 的缓存区 
+- 和单例的区别
+  - 单例是一个类只创建一个对象，享元模式是一个类可以创建多个对象，每个对象被多处代码引用共享。前者是限制对象的个数，后者是达到对象复用，节省内存
 
 ### 行为型
 
