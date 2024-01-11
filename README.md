@@ -354,6 +354,19 @@ ACID、三范式
 
 - 结构：avl b b+树
 - 场景、失效、sql索引
+- 数据结构
+  - B+树、Hash、Full-text索引
+
+- 物理存储
+  - 聚簇索引和二级索引
+  - 回表操作->覆盖索引避免
+
+- 字段特性
+  - 主键索引、唯一索引、普通索引、前缀索引
+
+- 字段个数
+  - 单列索引和联合索引
+
 
 锁
 
@@ -380,17 +393,14 @@ SQL优化
 - Join优化
   - Index Nested-Loop Join：INLJ，索引嵌套循环连接
   - Block Nested-Loop Join：BNLJ，缓存块嵌套循环连接
-  
 - 最左匹配原则
   - 组合索引、order by、group by
     - using filesort
       - 单路排序&双路排序
-  
 - 分页查询 使用索引字段
 - Count
   - 字段有索引:count( \* ) ≈ count(1) > count(字段) >count(主键 id) 
   - 字段无索引:count( \* )≈count(1)>count(主键 id)>count(字段)
-
 - 一些原则
   - 代码线上、索引后加
   - 联合索引进来使用覆盖索引
@@ -398,6 +408,13 @@ SQL优化
   - 长字符串使用前缀索引
   - where 与 order by 优先where
   - 基于慢SQL优化
+- 索引失效的场景
+  - 类型不匹配 字符串 数字
+  - 表达式计算
+  - 函数使用
+  - like '%xxx'、覆盖索引除外
+  - 最左匹配
+  
 
 
 高性能

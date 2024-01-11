@@ -113,4 +113,12 @@ JUC+MySQL调优+JVM
 
 
 
- 
+视频了解大概，跟着文档、专栏学习 效率更高一点
+
+
+
+值得的：Netty
+架构设计的好看的：Dubbo
+理念完善的：Spring
+实现巧妙的：AQS 、ConcurrentHashMap
+贴近业务的：Rocketmq 
