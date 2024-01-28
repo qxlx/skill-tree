@@ -350,6 +350,10 @@
 
 ACID、三范式
 
+逻辑架构
+
+- 客户端-》连接池->缓存-解析器、优化器、存储引擎
+
 索引
 
 - 结构：avl b b+树
@@ -418,6 +422,19 @@ ACID、三范式
 存储引擎
 
 - innodb myisam 
+- 内存结构
+  - buffer pool
+  - 自适应哈希
+  - change buffer 
+  - log buffer
+  - 磁盘结构
+    - 系统表空间->段->区->页(16k)-行数据
+    - Redo log
+      - 写入时机   定时、提交写、提交写os cache
+
+  - 脏页-> check point解决
+    -  check point 方式
+    - double write 解决check point写失效问题
 
 日志
 
@@ -425,14 +442,17 @@ ACID、三范式
 
   - redolog
     - 事务提交成功，buffer pool数据没有写入磁盘，宕机了，可以用来恢复buffer pool数据
+    - 作用：重做日志，保证数据库持久性
 
 
   - undolog
     - 事务进行回滚的时候进行操作，恢复buffer pool中的数据
+    - 作用：回滚日志，用于维护数据库原子性、实现MVCC
 
 
 - binlog
   - 用来恢复数据库磁盘里的数据
+    - 作用：主从复制、数据恢复等。
 
 
 SQL优化
@@ -738,6 +758,11 @@ LRU Cache
   - concurrenthashmap  	
   - put() get() resize() 三个过程细化
   - 7/8之间的区别 具体问题细化一下 
+- HashMap
+  - hashmap 的数据结构，扩容时机；
+  - concurrentHashMap 和 hashmap 的区别，为什么前者的 key 和 value 都不能为 null；
+  - concurrentHashMap 怎么保证的线程安全；
+  - concurrentHashMap 扩容过程；
 
 字符串
 
@@ -1260,6 +1285,10 @@ Pulsar
 
 - 封装、抽象、继承、多态
 - 接口 VS 抽象类
+- 封装-信息隐藏和数据访问保护
+- 抽象-隐藏方法的具体实现，提高可拓展性、维护性、处理复杂系统的有效手段
+- 继承-解决代码复用
+- 多态-提高代码的拓展-复用
 
 函数式编程
 
@@ -1270,6 +1299,13 @@ Pulsar
 ## 规范
 
 编码规范
+
+- 可维护性、可读性、可拓展性、灵活性、简洁性、可复用性、可测试性
+- 多态、继承 写出可复用代码
+- 编码规范写出可读性好的代码
+- 设计原则指导写出可复用、灵活、可读性、易拓展、易维护代码
+- 设计模式指导写出拓展性
+- 持续重构->可维护性代码
 
 ## 重构
 
