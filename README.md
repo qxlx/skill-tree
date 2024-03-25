@@ -1274,6 +1274,13 @@ Nginx
   - 击穿：某个热点key，微博TOP10数据。  提前预热
   - 穿透：cache 和 db 都查不到数据 
     - 布隆过滤器
+      - 数据结构：bitMap
+      - 多个hash函数
+      - 用户不存在，一定不存在
+    - 使用
+      - 初始化数组
+      - 输入数据
+      - 查询或者更新
 - BigKey
   - 网络IO阻塞、内存不均匀 
   - key * 、flushdb、flushall
@@ -1304,13 +1311,21 @@ redis事务和数据库事务区别
 
 带来的问题
 
-- 消息延迟、系统的复杂度、数据不一致（消息顺序、消息丢失、重复消费、消息挤压、高可用、高性能）
+- 消息延迟、系统的复杂度、数据不一致（消息顺序、消息丢失、重复消费、消息挤压、实例高可用、实例高性能）
 
 ### Kafka
 
 Kafka基础架构
 
-- Broker->Topic->Partition->Partition Leader-> Partition Follower 
+- Cluster
+  - Broker
+    - Topic
+      - Partition
+        - Partition Leader
+        - Partition Follower 
+
+- consumer
+- product
 - 部署架构：单机模式/集群模式
 
 分区机制
@@ -1338,8 +1353,11 @@ Kafka基础架构
 消息可靠传输
 
 - 发送、存储、消费三个阶段
+- 持久化
 
 生产者消费流程
+
+消息的顺序性
 
 Kafka如何实现高性能
 
@@ -1354,6 +1372,8 @@ Kafka如何实现高性能
 Kafka多线程消费
 
 Kafka高水位和Leader Epoch原理
+
+如何设计一个消息队列
 
 ### RabbitMQ
 
@@ -2000,6 +2020,8 @@ Jenkins
 
 ## DevOps
 
+构建、测试、部署、维护
+
 ## docker
 
 基本组件
@@ -2053,7 +2075,11 @@ swarm
 
 ## k8s
 
+容器运行时接口CRI
 
+容器网络接口CNI
+
+容器存储接口CSI
 
 # 九.大数据
   实时计算
