@@ -1417,6 +1417,17 @@ Kafka高水位和Leader Epoch原理
 - P 压缩 B 保持 C 解压缩
 - 性能和空间的取舍
 
+无消息丢失配置
+
+- 生产端
+  - 回调发送消息 `producer.send(msg, callback)` `acks = all` 已提交  `retries` 重试
+- Broker
+  - `unclean.leader.election.enable = false` 哪些broker有资格竞选分区leader
+  - `replication.factor ` 消息保存几份
+  - `min.insync.replicas` 写入副本个数 一般大于1
+- 消费端
+  - `enable.auto.commit`  手动提交位移，消费完再提交
+
 如何设计一个消息队列
 
 - 存储设计：高可用-数据持久化、顺序读写、零拷贝技术
