@@ -1427,6 +1427,8 @@ Kafka高水位和Leader Epoch原理
   - `min.insync.replicas` 写入副本个数 一般大于1
 - 消费端
   - `enable.auto.commit`  手动提交位移，消费完再提交
+- 拦截器
+  - 生产者和消费者拦截器
 
 如何设计一个消息队列
 
