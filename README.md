@@ -1384,6 +1384,12 @@ Kafka如何实现高性能
   - 订阅主题发生变更
   - 定于主题的分区数发生变更
 
+位移主题
+
+- consumer_offsets 保存kafka消费者的位移信息
+- kafka集群中第一个consumer程序启动时，kafka会自动创建位移主题
+- kafka使用compact策略删除位移过期中过期消息 避免该主题无限器膨胀
+
 消费者位移
 
 - 格式：key是groupId+topic+分区号，value是offset的值
