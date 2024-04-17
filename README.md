@@ -1383,6 +1383,16 @@ Kafka如何实现高性能
   - 组成员发生变更，减少或者增加
   - 订阅主题发生变更
   - 定于主题的分区数发生变更
+- 避免rebalance
+  - 弊端
+    - 影响consumer端TPS、慢、效率不高
+  - 2类非必要的rebalance
+    - consumer没及时发送心跳请求，导致踢出 group
+    - consumer消费时间过长导致
+  - 减少rebalance
+    - session.timeout.ms >= 3 *  heartbeat.interval.ms
+    - max.poll.interval.ms 
+    - GC 参数
 
 位移主题
 
