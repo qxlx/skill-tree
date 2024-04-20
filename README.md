@@ -366,8 +366,12 @@ ACID、三范式
   - 回表操作->覆盖索引避免
 
 - 字段特性
-  - 主键索引、唯一索引、普通索引、前缀索引
-
+  - 主键索引
+  - 唯一索引
+  - 普通索引
+    - 更新和查询，唯一索引没办法使用 change buffer带来的随机读性能
+  - 前缀索引
+  
 - 字段个数
   - 单列索引和联合索引
 
@@ -424,14 +428,13 @@ ACID、三范式
 - innodb myisam 
 - 内存结构
   - buffer pool
+    - change buffer 
   - 自适应哈希
-  - change buffer 
   - log buffer
   - 磁盘结构
     - 系统表空间->段->区->页(16k)-行数据
     - Redo log
       - 写入时机   定时、提交写、提交写os cache
-
   - 脏页-> check point解决
     -  check point 方式
     - double write 解决check point写失效问题
@@ -453,6 +456,7 @@ ACID、三范式
 - binlog
   - 用来恢复数据库磁盘里的数据
     - 作用：主从复制、数据恢复等。
+- 一条更新语句，先写 undo、后写redo 和 bin log
 
 
 SQL优化
