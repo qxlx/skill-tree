@@ -1432,6 +1432,12 @@ Kafka如何实现高性能
 
 Kafka多线程消费
 
+- Kafkaconsumer：用户线程和心跳线程
+- 用户线程用来处理消息，心跳线程定期给broker发送心跳请求
+- 实现方案：
+  - 1.启动多个线程，每个线程独立的consumer实例
+  - 2.Worker Thread 模式
+
 Kafka高水位和Leader Epoch原理
 
 - HW：offet+1
