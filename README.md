@@ -483,6 +483,10 @@ SQL优化
 - Count
   - 字段有索引:count( \* ) ≈ count(1) > count(字段) >count(主键 id) 
   - 字段无索引:count( \* )≈count(1)>count(主键 id)>count(字段)
+- order by
+  
+  -  全字段排序和rowid排序   区别 是否使用最少字段排序 然后最后查询主键索引树
+  
 - 一些原则
   - 代码线上、索引后加
   - 联合索引进来使用覆盖索引
