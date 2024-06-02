@@ -117,9 +117,7 @@ JVM+并发+Spring+MySQL+Redis+Kafka
 
 - 说一个技术的时候，最好说一下应用场景
 
-
-
-JUC+MySQL调优+JVM
+难点：性能优化、JUC+MySQL调优+JVM ，软件设计
 
 
 
