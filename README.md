@@ -379,23 +379,70 @@ ACID、三范式
 
 - 全局锁
   - `flush tables with read lock;` `unlock tables;`
-
+  - 全库逻辑备份
+  
 - 表锁
+
+  - 表锁
+
+    - `lock tables xx read/write`
+
+  - 元数据锁
+
+    - 对一张表进行CRUD操作时，加的是MDL读锁
+    - 对一张表结构变更时，加的是MDL写锁
+    - 目的：保证当前用户对表执行CRUD时，防止其他线程对这个表结构进行变更
+
+  - 意向锁
+
+    - 当执行插入、更新、删除操作，先对表加上意向独占锁，然后对该记录加独占锁。
+
+    - 普通select 不会加行级锁
+
+    - ```sql
+      //先在表上加上意向共享锁，然后对读取的记录加共享锁
+      select ... lock in share mode;
+      //先表上加上意向独占锁，然后对读取的记录加独占锁
+      select ... for update;
+      ```
+
+    - 快速判断表里是否有记录被加锁。 
+
+      - 先看有意向锁没，没有在加独占锁
+
+  - AUTO_INC锁
+
 - 行锁 
   - 锁定范围
     - InnoDB行锁是通过给索引上的索引项加锁来实现的，只有通过索引条件检索的数据， InnoDB才使用行级锁，否则，InnoDB将使用表锁。
+    
     - 记录锁：锁定索引中一条记录
+    
     - 间隙锁：锁住一个区间，比如(10,15)
       - 可以防止幻读、保证索引间隙不会插入数据
-
+      - 间隙锁不会互斥、目的都是防治插入幻读
+      
     - 临键锁：记录锁+间隙锁
-    - 插入意向锁：做insert操作时添加的对记录id的锁
-
+    
+    - 插入意向锁：做insert操作时添加的对记录id的锁。判断当前记录是否添加了间隙锁
+    
+    - ```sql
+      //对读取的记录加共享锁
+      select ... lock in share mode;
+      
+      //对读取的记录加独占锁
+      select ... for update;
+      ```
+    
   - 功能
     - 读锁
     - 写锁
 
   - 对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及数据集加写锁
+
+    - update
+      - update where 条件没有索引会 所有记录加上 next-key 锁（记录锁 + 间隙锁），相当于把整个表锁住了
+
   - 对于普通SELECT语句，InnoDB不会加任何锁
 
 
@@ -415,6 +462,9 @@ ACID、三范式
 - 为了解决可重复读下的幻读问题
 
   - MVCC+间隙锁
+    - 快照读：MVCC方式解决幻读
+    - 当前读：next-key lock（记录锁+间隙锁）
+    - **MySQL 可重复读隔离级别并没有彻底解决幻读，只是很大程度上避免了幻读现象的发生。**
   - 已提交事务++未提交事务+为开始事务
     - 快照读+当前读
     - trx_id + roll_pointer  read_view 
@@ -494,14 +544,23 @@ SQL优化
   - 长字符串使用前缀索引
   - where 与 order by 优先where
   - 基于慢SQL优化
+- SQL阻塞的原因
+
+  - 表锁、MDL锁、行锁、flush锁
+
 - 索引失效的场景
   - 类型不匹配 字符串 数字
+    - `CAST( xxx AS signed int)`
   - 表达式计算
+    - 破坏索引值的有序性
+    - `EXPLAIN SELECT * FROM city_info WHERE id + 1 = 2`
   - 函数使用
+    - ``EXPLAIN SELECT count(1) FROM city_info WHERE LENGTH(city) = 1;``
   - like '%xxx'、覆盖索引除外
   - 最左匹配
-
-
+  - 字符编码不同
+    - utf-8 和 utf8mb4
+    - `EXPLAIN select d.* from tradelog l , trade_detail d where d.tradeid=CONVERT(l.tradeid USING utf8) and l.id=2; `
 
 高性能
 
