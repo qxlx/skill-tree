@@ -853,6 +853,7 @@ IO
 反射
 
 - 作用：创建对象、执行方法、获取类的信息
+- 应用场景：框架中，spring bean的生成。以及mvc\mybaits的具体方法的调用
 
 序列化
 
@@ -862,6 +863,11 @@ IO
 - 应用：替换配置、自定义著丛切换等
 
 枚举
+
+- SPI机制
+  - 提供接口、实现类、固定的文件名+实现类
+  - 原理：通过读取配置文件，使用反射创建类的实例 可拓展性
+  - 应用场景：boot springfactors\dubbo\jdbc
 
 ## Go
 ## python
@@ -1783,12 +1789,13 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 >
 > 前置基础知识
 >
-> - 设计模式、数据结构算法、反射、多线程
+> - 设计模式、数据结构算法、反射、多线程、网络编程
 >
 > 源码学习方式
 >
 > - 会使用、全局观、不要关注细节、看注释(类、方法、接口)、见名知意、大胆猜测、小心验证、画图、学习路径、坚持
 > - 推荐路径 集合、并发、spring、mvc、mybatis、boot、Alibaba、bio->netty->kafka
+> - 性能优化、框架源码、中间件源码、架构设计、云原生、大数据
 
 
 
@@ -1831,29 +1838,70 @@ AQS
 
 - CompletableFuture
 
-spring
+Spring
 
-- Bean加载
+- IOC容器
+- 刷新十三个步骤
+- bean生命周期
+  - 三级缓存
 - 事务
 - AOP
-- 三级缓存
-- Spring mvc
-- spting boot
-  - 自动装配
+  - 静态代理、动态代理
+    - Cglib 和 JDK代理
+
+- 拓展点
+  - FactoryBean
+  - initPropertySources
+  - customizeBeanFactory
+  - 自定义标签
+  - BFPP/BPP
+  - Before/after
+
+- 常用注解
 
 Spring mvc
 
+- 启动流程，tomcat \ spring \mvc 
+- 请求处理流程 dispatcher 转发流程
+
 mybaits
+
+- 解析SQL，反射执行目标方法
 
 tomcat
 
+- 启动流程
+- 线程模型
+- 打破双亲委派模型
+
+boot
+
+- 自动装配
+- 初始化过程
+- 如何和tomcat集成
+
+cloud
+
+- nacos
+- fegin
+
+io
+
+nio
+
 netty
 
-Dubbo
+Dubbo：⭐️  深入理解
 
 kafka
 
+rocketMq
+
+elk
+
 ZK
+
+automq
 
 ## DDD&MVC
 # 六.架构设计
@@ -2263,6 +2311,11 @@ Jenkins
 
 容器数据卷
 
+docker file 
+
+- 构建镜像的文本文件 
+- 步骤：编写-> 构建 -> run
+
 compose
 
 container
@@ -2276,6 +2329,27 @@ volume
 swarm
 
 ## k8s
+
+为什么需要k8s
+
+- 解决容器运行时的管理和编排工作, 创建、调度容器，监控，管理服务
+
+容器编排
+
+- 生产级别的容器编排平台和集群管理系统
+
+基本概念（控制和数据面 分离。有点像 计算和数据分离的感觉）
+
+- kubectl  客户端
+- Master node
+  - Api server  核心管理组件以及外部通信
+  - Etcd 存储资源对象和状态配置
+  - scheduler 负责容器的编排工作，检查节点资源状态
+  - controller manager 维护容器和节点资源状态，故障检测、服务迁移、应用伸缩等
+- Worker node
+  - kubelet  Node的代理 
+  - docker 容器镜像的使用者
+  - Kube proxy  网络通信
 
 容器运行时接口CRI
 
@@ -2423,6 +2497,10 @@ CR
 ## 14.管理者能力认识篇
 
 ## 15.数据思维篇
+
+# 十一篇 职场生存指南
+
+学习
 
 # 面试
 
