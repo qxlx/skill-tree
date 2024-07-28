@@ -848,6 +848,28 @@ OOP
 
 IO
 
+- 字节流、字符流
+
+NIO
+
+- 通道 channel 
+  - 默认阻塞模式 `configureBlcking(false)`
+    - 阻塞：调用read 或 write ，如果RW不到数据 会等待 
+    - 非阻塞：调用read 或 write  ，如果RW直接返回不等待 
+  - FileChannel、DatagramChannel、SocketChannel、ServerSocketChannel。FileChannel
+  - 异步模式
+    - channel直接注册到操作系统内核中，内核通知某个channel可读、可写或可连接
+- 缓冲区 buffer 
+  - 常用buffer 
+    - ByteBuffer、CharBuffer、ShortBuffer、IntBuffer、LongBuffer、FloatBuffer、DoubleBuffer、MappedByteBuffer
+  - Capacity 容量 创建时设定
+  - limit  缓冲区当前终点
+  - position 位置 下一个要RW元素的索引
+  - mark 标记
+- 选择器 selector
+  - 解决轮训判断状态问题，多路复同器，java进行了封装，提供了一个统一的方式。
+  - 监听的channel注册到selector,底层通过轮训的方式 查询注册的channel 可读、可写、可连接 返回处理
+
 范型
 
 反射
@@ -1124,9 +1146,9 @@ socket：本质就是一个四元组(CIp CPORT+ SIP SPORT)
 - `netstat -natp` 网络状态
 - `lsof` 打开文件状态
 
-同步：调用者需要等待函数的返回结果，才可以继续执行。
+同步：调用者需要等待函数的返回结果，才可以继续执行。(APP自己R/W)
 
-异步：调用者无需等待函数的返回结果，可以继续执行，但是一般都是通过回调函数进行通知。
+异步：调用者无需等待函数的返回结果，可以继续执行，但是一般都是通过回调函数进行通知。(kernel完成RW 没有访问IO buffer)
 
 同步vs异步：在于被调用者结果的通知方式，同步无需通知，异步需要进行回调。
 
@@ -1140,7 +1162,7 @@ BIO：**BIO的特点就是在IO执行的两个阶段都被block了。**
 
 NIO：**NIO特点是用户进程需要不断的主动询问内核数据准备好了吗？一句话，用轮询替代阻塞！**
 
-IO多路复用 
+IO多路复用：**多条路 通过一个系统调用，获取其中的IO状态，程序自己对有状态的IO进行RW** 
 ![image](https://github.com/qxlx/skill-tree/assets/36980092/22a9b41f-9834-4199-9f7e-f7cf3d417214)
 
 
@@ -1262,6 +1284,26 @@ OpenFeign
 Gateway
 
 sentinel
+
+## netty
+
+基本概念
+
+- 线程模型
+
+- 核心组件
+- 拆包\粘包
+- 内存管理
+- 其他
+
+源码解析
+
+- 核心组件源码剖析
+- 事件循环组
+- 读/写请求源码
+- 内存管理策略
+- 编码器
+- 时间轮
 
 # 四.中间件
 ## RPC/注册中心
@@ -1696,10 +1738,16 @@ Pulsar
   - 继承主要有，复用、is-a关系、支持多态 
   - 通过组合、接口、委托实现
 
-- 贫血模型：只包含数据，不包含业务逻辑
-- 充血模型：业务和数据包含在一个类   DDD ：重domain 轻service
-- 如何选择
-  - 业务复杂 推荐DDD 业务简单 推荐传统开发模式
+- MVC&DDD
+  - 贫血模型：只包含数据，不包含业务逻辑
+    - Controller->Vo
+    - Service->BO
+    - Repository->Entity
+
+  - 充血模型：业务和数据包含在一个类   DDD ：重domain 轻service
+  - 如何选择
+    - 业务复杂 推荐DDD 业务简单 推荐传统开发模式
+
 - 面向对象比面向过程有哪些优势
   - OOP能应对更大规模复杂程序的开发
   - OOP 风格的代码更加易用、易拓展、易维护
@@ -2486,7 +2534,7 @@ swarm
 
 - 生产级别的容器编排平台和集群管理系统
 
-基本概念（控制和数据面 分离。有点像 计算和数据分离的感觉）
+部署基本概念（控制和数据面 分离。有点像 计算和数据分离的感觉）
 
 - kubectl  客户端
 - Master node
@@ -2498,6 +2546,15 @@ swarm
   - kubelet  Node的代理 
   - docker 容器镜像的使用者
   - Kube proxy  网络通信
+
+基础概念
+
+- 集群
+- pod
+
+
+
+
 
 容器运行时接口CRI
 
@@ -2657,6 +2714,8 @@ CR
 学习
 
 - 学习方法
+  - 学习不应该只是学容易的环节，学习->记忆->应用->输出 
+  - 检测获得了什么、总结规律、避免道德许可
 - 学习能力
 - 学习心态
 - 学习本质
