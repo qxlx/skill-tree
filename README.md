@@ -33,7 +33,21 @@
 | netty、nginx、es、 |      |
 | Python、大数据     | 24年 |
 
+24年
 
+- netty
+- kafka
+- dubbo
+- spring
+
+25年
+
+- dubbo
+- JUC
+- SpringCloud
+- XXL-job
+- 监控
+- ES
 
 # **一.基础学科**
 
@@ -1298,9 +1312,16 @@ sentinel
     - 组成 selector thread 任务队列
     - accept\read\write
   - Unsafe -> 主要负责真正的IO操作 read \ wite
-  - ChannelPipleline
+  - ChannelPipleline (每个线程独立)
     - ChannelContext
-    - ChannelHandler
+    - ChannelHandler 
+      - 以双向链表进行展示的
+        - 输入 `channelInBound`
+        - 输出	`channelOutBound`
+      - `channel.writeAndFlush` 从tail-> 往尾部往前找
+      - `ctx.writeAndFlush` 从当前Handler 往后找
+      - 每一个`channelHandler` 封装在了`channelContext`（handler事件传播、ByteBuf内存分配器）
+    - pipeline什么时候创建的
   - 优化
     - selector
     - FastThreadLocal
@@ -1326,6 +1347,12 @@ sentinel
 - 内存管理策略
 - 编码器
 - 时间轮
+  - 时间轮是一种理论概念，netty、dubbo、Kafka、Quartz都有自己的实现
+  - 基本概念
+    - 总块数 wheelSize 
+    - 每块对应的时间间隔  
+    - 当前所指的时间 currentTime，独立的线程
+    - 任务 task
 
 # 四.中间件
 ## RPC/注册中心
@@ -1695,6 +1722,14 @@ Pulsar
 
 ## 监控/报警/日志
 
+
+
+### 监控
+
+监控方式
+
+- SQL、日志、错误信息等方式
+
 ### 日志
 
 - 日志功能
@@ -1863,10 +1898,19 @@ Pulsar
 
 ## 重构
 
+- 为什么重构
+  - 保证代码质量的有效手段
+  - 避免过度设计的手段
+
 - 单元测试
 - 可测试性
 - 大重构
+  - 顶层代码设计的重构，系统、模块、代码结构、类与类之间的关系等
+  - 分层、模块化、解耦、抽象可服用组件
+
 - 小重构
+  - 类、函数、变量代码级别
+
 
 ## 设计原则
 单一职责原则-SRP
@@ -1957,6 +2001,18 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 - 高内聚：相近的功能放到同一个组件中，不想尽的功能拆分
 - 低耦合：类之间的依赖关闭比较简单
 
+业务开发
+
+通用功能开发
+
+- 功能性需求
+- 非功能性需求
+  - 易用性、性能、拓展性、容错性、通用型、小步快跑、逐步迭代
+
+分层开发
+
+- 代码复用、隔离变化、隔离关注点、代码的可测试性、应对系统的复杂性
+
 ## 设计模式
 
 ### 创建型
@@ -2027,12 +2083,19 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 **模板模式**
 
 - 模板模式的本质定义一个框架流程，具体的拓展点可以子类进行实现。具体的功能是复用和拓展，复用是指的是，所有的子类可以复用父类中提供的模板方法的代码，拓展是框架通过模板模式提供功能拓展点，用户不修改框架源码的情况下，基于拓展点就可以实现功能。
+- 回调方式
+- 应用场景
+  - jdbcTemplate、servlet
+  - jUnit 
+
 
 **策略模式**
 
 - 定义、创建、使用
   - 解决的问题：解决if、else
   - 利用查表法，或者存储Class对象，利用反射调用方法。
+  - 设计原则和思想其实比设计模式更加普适和重要，掌握了代码的设计原则和思想，比设计模式更重要
+  - 设计原则和思想是高层次的理论和指导原则，设计模式是根据经验总结出来的编程范式
 - 应用场景
   - 文件排序 进行策略化
   - spring aop proxy的选择
@@ -2542,6 +2605,8 @@ SOA
   
 
 ## 系统设计
+
+## 设计方案
 
 # 七.编程工具
 
