@@ -1397,6 +1397,16 @@ sentinel
 - 事件循环组
 - 读/写请求源码
 - 内存管理策略
+  - 内存池的本质 合理使用有效的内存资源
+  - 目的  内存少(空间)，应用快(时间)、Java中 减少Full GC的STW
+  - Netty 是如何合理使用内存
+    - 尽量使用基本类型，不使用包装器
+    - 尽量类变量 不使用成员变量
+      - 如何选择 数据相同 推荐类变量  数据不同 推荐成员变量
+    - 对象复用
+      - 对象池  线程级别中复用 对象
+    - 内存的使用进行评估
+    - 使用零拷贝 
 - 编码器
 - 时间轮
   - 时间轮是一种理论概念，netty、dubbo、Kafka、Quartz都有自己的实现
@@ -1405,17 +1415,20 @@ sentinel
     - 每块对应的时间间隔  
     - 当前所指的时间 currentTime，独立的线程
     - 任务 task
+- fastThreadLocal
+- 内存池
+- 高性能无锁队列 Mpsc Queue
 
 # 四.中间件
 ## RPC/注册中心
 
-Zookeeper
+### Zookeeper
 
-Dubbo
+### Dubbo
 
 ## 网关/代理
 
-Nginx
+### Nginx
 
 ## NoSQL
 ## 缓存
@@ -1745,9 +1758,9 @@ Java生产者如何管理TCP连接
 
 ### RabbitMQ
 
-Pulsar
+### Pulsar
 
-
+### AutoMQ
 
 ## 搜索引擎 
  ### ES
@@ -2089,6 +2102,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 - 目的
   - 不改变原始类接口的条件下，生成代理类，控制访问。
+- 应用场景
+  - spring aop代理 
 
 **桥接模式**
 
@@ -2099,6 +2114,9 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 - 目的
   - 不改变原始累接口情况，对原始功能增强，比如女人穿衣服。
+- 应用场景
+  - spring bean的包装  任务的包装
+  
 
 **适配器模式**
 
@@ -2119,6 +2137,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
   - spring mvc中 adapter  实现controller接口、实现HttprequestHadnler、以及实现controller注解的方式 通过不同的适配器调用handlerRequest方法
 
 门面模式
+
+- 目的：解决多接口封装的问题，主要是API的集成 
 
 组合模式
 
