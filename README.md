@@ -193,11 +193,22 @@
 
   零拷贝是通过减少用户态到内核态数据的拷贝次数，以及提升数据的复制速度，文件从磁盘到内核缓冲区到网络socket缓冲区。
 
-  而pageCache是操作系统为了提升文件到读写，会先从pageCache中查询数据，如果有直接返回，没有再从磁盘读取数据，而写的过程也是一样的，写入pageCache，然后在同步回磁盘，以及提升读写性能。
+  一个正常服务端读文件的案例
 
-  异步IO、直接IO是为了解决大文件在零拷贝下的瓶颈，而推荐使用零拷贝。
+  - `用户态(read)`-> 切换 `内核态(PageCahce)`-> 拷贝第一次到pageCache->`内核态切换到用户态` ->`拷贝数据到用户缓冲区中`
+    - 两次数据拷贝+一次上下文切换 
+  - `用户态->内核态` 将数据拷贝到socket缓冲区  再将socket缓冲区拷贝到网卡中 一次上下文切换+两次数据拷贝
+  - 零拷贝-> 一次上下文切换+2次数据拷贝
   
-- COW (Cop On Write)
+  - 应用场景
+    - Kafka高性能IO读写、Netty高性能特点
+
+- 而pageCache是操作系统为了提升文件到读写，会先从pageCache中查询数据，如果有直接返回，没有再从磁盘读取数据，而写的过程也是一样的，写入pageCache，然后在同步回磁盘，以及提升读写性能。
+  - PageCache在大文件情况下，会降低提升访问最近数据文件的读写性能
+
+- 异步IO、直接IO是为了解决大文件在零拷贝下的瓶颈，而推荐使用零拷贝。
+
+COW (Cop On Write)
 
 - IO多路复用
 
@@ -1294,6 +1305,12 @@ C10K 问题本质上是操作系统处理大并发请求的问题。对于 Web �
 ## ORM
 ## Spring
 
+Spring工厂容器
+
+- 工厂分类 `beanFactory接口`
+  - `configurableBeanFactory`、`AutowireCapableBeanFactory` 、`ListableBeanFactory` `DefaultListableBeanFactory`
+  - XmlBeanFactory  读取XML配置文件 创建对应的对象
+
 Spring循环依赖
 
 - 循环依赖是在SpringBean初始化声明周期而产生的问题
@@ -1358,7 +1375,6 @@ sentinel
 基本概念
 
 - 线程模型
-
 - 核心组件
   - Bootstrap\ServerBootStrap
   - channel  通过管道进行设置参数
@@ -1394,6 +1410,16 @@ sentinel
     - 特定分隔符 `DelimiterBasedFrameDecoder`
     - 消息长度+消息内容 `LengthFieldBasedFrameDecoder`
 - 内存管理
+  - 内存规格
+  - netty默认申请内存大小16MB Chunk(PoolChunk) 每一次都申请16MB，一个Chunk划分为多个Page(8K) 
+  - Huge : netty大于16MB内存定义Huge大型内存，不做缓存
+  - Normal: 最小占用的内存  一个Page(8K) 最大16MB(Chunk) 8K倍数增加
+  - Small Tiny 小于Page的数据单位
+  - Tiny 最小值16B->498B  每一次都按照16B 每一次增加16B 
+  - Netty内存池 结构的设计及其相关对象
+    - PoolArena 内存池管理内存的核心 总体的管理者
+      - Netty采用固定数量的多个Arena 进行内存的分配 每个线程都有一个，多个线程进行共享同一个 
+
 - 其他
 
 源码解析
@@ -2242,6 +2268,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 
 ## 大型项目
 
+
+
 封装和抽象
 
 分层和模块化
@@ -2267,6 +2295,17 @@ Kiss首要原则
 持续重构、
 
 项目和团队拆分
+
+### CodeReview的重要性
+
+- 互相学习
+- 摈弃英雄主义
+- 提高代码可读性
+- 技术穿帮带
+- 团队人员都熟悉
+- 打造良好技术氛围
+- 技术沟通方式
+- 团队自律性
 
 ## 源码解析
 
@@ -3047,7 +3086,7 @@ CR
 
 ## 15.数据思维篇
 
-# 十一篇 职场生存指南
+# 职场生存指南
 
 学习
 
