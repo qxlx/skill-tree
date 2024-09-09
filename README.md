@@ -1467,6 +1467,10 @@ sentinel
       - Jemalloc  内存规格划分  Small Large Huge
         - Buddy 伙伴算法   解决外部碎片
         - Slab  内部碎片
+  - PoolChunkList
+    - init->00->25->50->75->100
+    - 添加 minUsage->maxUsage   升级和降级的过程
+    - 初始化的过程 先找找不到在创建新的
 - 高性能无锁队列 Mpsc Queue
 
 ## MyBatis
