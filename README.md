@@ -1342,7 +1342,14 @@ Bean生命周期
 - 实例化
 - 初始化-循环依赖
 - 使用
-- 销魂
+- 销毁
+- BeanFactotyAware 
+  - 解决scope = prototype 注入失效的问题
+
+- BeanPostProcessor
+  - 完成对象加工，拓展点  统一处理 减少冗余代码
+  - 可以解耦合处理
+
 
 AOP原理
 
