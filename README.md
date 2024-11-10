@@ -1932,10 +1932,14 @@ kafka
 监控基本术语
 
 - 监控指标
+  - `http_request_total{uri="/api/placeOrder",method="POST",application="xxx-dog",instance_ip="x",} 10`
+  - 指标名称 + 标签 + 样本值 + 时间戳
   - 标签方式
 - 指标类型
   - Gauge - 测量值 ，关注当前值
   - Counter - 单调递增的值，关注变化量、变化率， QOS
+    - rate QPS、
+    - increase 一段增长的值 
   - Histogram - 直方图 描述延迟分布
   - Summary - 摘要类型，客户端计算延迟分布位
 - 时序数据库
