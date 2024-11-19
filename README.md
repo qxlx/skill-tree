@@ -58,6 +58,7 @@
 - 算法专供
 - 云原生
 - 大数据
+- 写好代码的书籍
 
 # **一.基础学科**
 
@@ -1341,6 +1342,9 @@ Spring工厂容器
 - 工厂分类 `beanFactory接口`
   - `configurableBeanFactory`、`AutowireCapableBeanFactory` 、`ListableBeanFactory` `DefaultListableBeanFactory`
   - XmlBeanFactory  读取XML配置文件 创建对应的对象
+- ApplicationContext
+  - ClassPathXmlApplicatonContext、AnnotationConfigApplicationContext
+  
 
 Spring循环依赖
 
@@ -1370,13 +1374,33 @@ Spring循环依赖
 Bean生命周期
 
 - 动态注册bean的两种方式
+
+  - 配置Bean的方式 XML、注解
+
+  - 本质都是通过newBD来进行创建 无论是注解还是XML方式
+
+  - XML   `GenericBeanDefinition` 
+
+  - 注解  `AnnotationedBeanDefinition`
+
+  - 编码方式 
+
+    ```java
+    BeanDefinitionBuilder bdb = BeanDefinitionBuilder.genericBeanDefinition(Person.class);
+    AbstractBeanDefinition beanDefinition = bdb.getBeanDefinition();
+    ```
+
 - 实例化
+
 - 属性注入
   - set xml 、 注解 
 
 - 初始化-循环依赖
+
 - 使用
+
 - 销毁
+
 - BeanFactotyAware 
   - 解决scope = prototype 注入失效的问题
 
@@ -2088,8 +2112,10 @@ kafka
   - 封装-信息隐藏和数据访问保护
   - 抽象-隐藏方法的具体实现，提高可拓展性、维护性、处理复杂系统的有效手段
   - 继承-解决代码复用
+    - 必须是is_a的关系
+    - 语法限制
   - 多态-提高代码的拓展-复用
-
+  
 - 接口 VS 抽象类
   - 基本定义
     - 抽象类：不能被实例化、只能被继承、抽象类可以包含属性和方法，也可以包含抽象方法。子类继承抽象类 必须实现抽象类的所有的抽象方法
@@ -2126,7 +2152,10 @@ kafka
   - OOP 风格的代码更加易用、易拓展、易维护
   - OOP 人性化 高级 智能
 
-
+- OOP和AOP的理解
+  - 现实世界是复杂的，如果只具备一个对象的基本操作，那么所做的功能有限，所以需要AOP提供增强功能，AOP是对OOP强有力的补充技术
+  - IOC 
+    - Spring IOC解决的是对象图的初始化和自动状态，已经完整一些拓展点的功能，这部分功能是可复用的。所以Spring 具备可复用性，如果程序员自己去完成这个操作，一来和业务强绑定 耦合性高，二来 这个过程极其复杂 容易出错。IOC 可以帮助你完成自定义的Bean的装配和依赖关系，但是一个系统不可能都被Spring管理，也有一些临时对象，比如xxO之类，一个订单数据等。
 
 函数式编程
 
