@@ -1336,7 +1336,11 @@ C10K 问题本质上是操作系统处理大并发请求的问题。对于 Web �
 
 # 三.开发框架
 ## Web框架
+
+### Spring MVC
+
 ## ORM
+
 ## Spring
 
 - 约定优于配置、低侵入、松耦合、模块化、轻量级、
@@ -1377,7 +1381,7 @@ Spring循环依赖
 
 Bean生命周期
 
-- 动态注册bean的两种方式
+- BD创建与注册
 
   - 配置Bean的方式 XML、注解
 
@@ -1394,20 +1398,55 @@ Bean生命周期
     AbstractBeanDefinition beanDefinition = bdb.getBeanDefinition();
     ```
 
-- 实例化
+  - 为什么需要BeanDefinitionHolder
 
+    - 操作方便，传参数方便
+
+  - 在通过注解或者XML 生成DB对象之后，可以编程式修改BD，是一个非常重要的拓展点。BFPP 其实就是修改BD
+
+  - ```java
+    MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
+    propertyValues.add("pwd", "123");
+    
+    ConstructorArgumentValues constructorArgumentValues = beanDefinition.getConstructorArgumentValues();
+    constructorArgumentValues.addArgumentValues("123");
+    ```
+
+  - 注册到Map中
+    - `DefaultListableBeanFactory.beanDefinitionMap   key=beanName value=BD`  
+
+- 注册一个bean常见方式
+
+  - 注解方式、XML
+    - 不推荐XML方式，推荐使用@component  程序员自己创建的类型 这种方式
+
+  - @Bean注解  
+    - Spring开发过程建议我们使用注册的方式，别的框架 非Spring 组件，提供的类型，SqlSessionFactory
+  - 扫描基础包 ClassPathBeanDefinitionScanner(Spring Boot就是这种方式)
+  - @Import (这种方式不会暴露给用户，封装细节)
+    - 应用场景 
+      - 主要是应用框架底层封装，SpringBoot 自动装配
+
+    - @Import(xxxx.class)   不推荐
+    - 实现 `implements ImportSelector 实现方法 添加@Import(xxx.Class)` 
+      - 有Class文件 推荐使用
+
+    - `ImportBeanDefinitionRegistrar 实现接口 自定义BD信息 自己注册`
+      - 不存在实际的Class，需要动态字节码技术 运行创建的类型
+
+  - 在实际的工作中，如何选择应该使用哪种方式进行注册一个Bean对象
+
+
+- 实例化
+  - 通过反射的方式 创建对象
 - 属性注入
   - set xml 、 注解 
-
 - 初始化-循环依赖
-
+  - 拓展点
 - 使用
-
 - 销毁
-
 - BeanFactotyAware 
   - 解决scope = prototype 注入失效的问题
-
 - BeanPostProcessor
   - 完成对象加工，拓展点  统一处理 减少冗余代码
   - 可以解耦合处理
@@ -1439,6 +1478,10 @@ Spring MVC原理
 Spring中设计模式
 
 springbootstart加载原理
+
+## SpringBoot
+
+- 自动装配原理
 
 ## Spring-cloud
 
@@ -2097,6 +2140,9 @@ kafka
 - 设计原则指导写出可复用、灵活、可读性、易拓展、易维护代码
 - 设计模式指导写出拓展性
 - 持续重构->可维护性代码
+- 代码是经济的
+  - 从软件的生命周期谈起，说白了就是后期维护成本，不能仅仅满足功能的前提下，考虑后期维护调整。
+
 
 ## 编程范式
 
