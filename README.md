@@ -1440,7 +1440,30 @@ Bean生命周期
 
 
 - Refresh()
-  - 
+  - 关注Spring 帮我们创建了几个BD  `beanDefinitonMap`，即将创建对象的一个模版
+  - 关注spring 创建了那些完整的对象，已经创建完成 `singletonMaps`
+    - 提前创建的几个BD，什么时候创建的
+      - 
+    - key：internalConfigurationAnnotationProcessor  Value：ConfigurationClassPostProcessor
+      - 作用
+        - 解析 @configuration @compentscan @compentscans @import
+    - Key: internalAutowiredAnnotationProcessor Value: AutowiredAnnotationBeanPostProcessor
+      - 作用 
+        - @Autowired, @Value
+    - Key: internalCommonAnnotationProcessor Value: CommonAnnotationBeanPostProcessor
+      - 作用    
+        - 解析 @PostConstruct @PreDestroy
+    - 事件相关的
+      - key:  internalEventListenerFactory  Value:  DefaultEventListenerFactory
+      - Key: internalEventListenerProcessor Value :  EventListenerMethodProcessor
+  - prepareRefresh
+  - obtainFreshBeanFactory
+  - prepareBeanFactory
+  - postProcessBeanFactory
+  - invokeBeanFactoryPostProcessors
+  - registerBeanPostProcessors
+  - onRefresh
+  - finishBeanFactoryInitialization
 - 实例化
   - 通过反射的方式 创建对象
 - 属性注入
