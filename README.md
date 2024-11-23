@@ -60,7 +60,7 @@
   - 写好代码的书籍
   - 代码大全、代码整洁之道、架构整洁之道、重构、编写可读代码的艺术、程序员职业素养、代码的未来、领域驱动设计
 - 专栏
-  - 左耳听风-在看
+  - 左耳听风、郭东白的架构课
   - 性能优化-专栏
 - 设计方案学习-落地的
   - Java 错误100例
@@ -1354,6 +1354,13 @@ Spring工厂容器
 - ApplicationContext
   - ClassPathXmlApplicatonContext、AnnotationConfigApplicationContext
   
+- BeanFactoryPostProcessor
+  - 重要的实现子接口 `BeanDefinitionRegistryPostProcessor`
+  - 加工的是 Spring BD 信息
+  - 应用场景分析
+
+- BeanPostProcessor
+  - 加工的是Spring 创建的对象 
 
 Spring循环依赖
 
@@ -1442,28 +1449,32 @@ Bean生命周期
 - Refresh()
   - 关注Spring 帮我们创建了几个BD  `beanDefinitonMap`，即将创建对象的一个模版
   - 关注spring 创建了那些完整的对象，已经创建完成 `singletonMaps`
-    - 提前创建的几个BD，什么时候创建的
-      - 
+    - 提前创建的几个BD，什么时候注册的
+      - AnnotatedBeanDefinitionReader
     - key：internalConfigurationAnnotationProcessor  Value：ConfigurationClassPostProcessor
-      - 作用
-        - 解析 @configuration @compentscan @compentscans @import
+      - 作用 : 解决bean注册问题
+        - 解析 @configuration @compentscan @compentscans @import  
+        - @ImportResource  遗留系统 
     - Key: internalAutowiredAnnotationProcessor Value: AutowiredAnnotationBeanPostProcessor
-      - 作用 
-        - @Autowired, @Value
+      - 作用  解决依赖注入属性值
+        - @Autowired, @Value  @Inject
     - Key: internalCommonAnnotationProcessor Value: CommonAnnotationBeanPostProcessor
-      - 作用    
-        - 解析 @PostConstruct @PreDestroy
+      - 作用   生命周期注解
+        - 解析 @PostConstruct @PreDestroy @Resource
     - 事件相关的
       - key:  internalEventListenerFactory  Value:  DefaultEventListenerFactory
       - Key: internalEventListenerProcessor Value :  EventListenerMethodProcessor
+    - 思考：Spring 尽管从XML架构提升到注解方式，但是底层整体流程没有改变，满足开闭原则，仅仅通过postProcessor进行拓展设计功能。
   - prepareRefresh
+    - 初始化标记 设置时间 事件的准备
   - obtainFreshBeanFactory
-  - prepareBeanFactory
+    - 获取Bean 工厂 `DefaultListableBeanFactory`
+  - prepareBeanFactory  ⭐️
   - postProcessBeanFactory
-  - invokeBeanFactoryPostProcessors
-  - registerBeanPostProcessors
-  - onRefresh
-  - finishBeanFactoryInitialization
+  - invokeBeanFactoryPostProcessors  ⭐️
+  - registerBeanPostProcessors  ⭐️
+  - onRefresh 
+  - finishBeanFactoryInitialization  ⭐️
 - 实例化
   - 通过反射的方式 创建对象
 - 属性注入
@@ -3194,6 +3205,7 @@ SOA
 
 - AOP 场景
   - 接口耗时统计  ✅
+    - 接口耗时 统计多个接口 ✅
   - SQL耗时统计   ✅
   - API 鉴权          
   - Error日志监控报警   ✅
