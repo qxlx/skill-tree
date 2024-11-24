@@ -1454,7 +1454,7 @@ Bean生命周期
     - key：internalConfigurationAnnotationProcessor  Value：ConfigurationClassPostProcessor
       - 作用 : 解决bean注册问题
         - 解析 @configuration @compentscan @compentscans @import  
-        - @ImportResource  遗留系统 
+        - @ImportResource  遗留系统  @PropertySource
     - Key: internalAutowiredAnnotationProcessor Value: AutowiredAnnotationBeanPostProcessor
       - 作用  解决依赖注入属性值
         - @Autowired, @Value  @Inject
@@ -1470,6 +1470,18 @@ Bean生命周期
   - obtainFreshBeanFactory
     - 获取Bean 工厂 `DefaultListableBeanFactory`
   - prepareBeanFactory  ⭐️
+    - 设置类加载器，为创建对象 或者 反射相关的操作
+    - 设置EL表达值
+    - 设置属性编辑器-类型转换器
+    - 创建一个ApplicationContextAwareProcessor
+      - 不在工厂启动的时候操作，而是在创建对象的初始化过程中，通过beanPostProcerrorBefore方法完成
+      - `EnvironmentAware ResourceLoaderAware ApplicationContextAware`  
+      - 不要在工厂启动的时候 注入这些aware ，而在对象创建的时候 在注入
+      - 为什么这样设计： set方法 不会自动注入，需要手动调用，必须放在bean  初始化操作中
+    - 进行接口类型与实现对象的配对
+      - Beanfactory ->  defaultListableBeanFactory
+    - 添加工具类 
+      - 系统环境等
   - postProcessBeanFactory
   - invokeBeanFactoryPostProcessors  ⭐️
   - registerBeanPostProcessors  ⭐️
@@ -2398,8 +2410,18 @@ kafka
 接口隔离原则-ISP
 
 - 如果是外部系统依赖不需要的API功能，那么需要把不需要的功能拆分出来。 相反面向对象的接口、函数也都是这样的思想。
-
 - 单一职责针对的是模块、类、接口的设计，接口隔离原则更注重于接口的设计，提供了判断接口是否是单一职责的标准。
+- 接口实现类的方式
+  - UserDao -> UserDaoImpl
+  - IUserDao -> UserDao
+  - ApplicationContext 
+    - ClassPathXmlApplicationContext
+  - FactoryBean
+    - SqlSessionFactoryBean
+  - PropertyEditor
+    - PropertyEditorSupport
+  - Aciton 
+    - ActionSupport
 
 依赖倒置原则-DIP
 
