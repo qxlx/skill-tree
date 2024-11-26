@@ -1483,7 +1483,12 @@ Bean生命周期
     - 添加工具类 
       - 系统环境等
   - postProcessBeanFactory
+    - 空实现
   - invokeBeanFactoryPostProcessors  ⭐️
+    - 调用BeanFactoryPostProcessor (修改BD 信息)
+    - BeanDefinitionRegistryPostProcessor 
+    - ConfigurationCLassPostProcessor 
+      - 根据注解找到bean的注册，生成BD，注册BeanFactory BDMap
   - registerBeanPostProcessors  ⭐️
   - onRefresh 
   - finishBeanFactoryInitialization  ⭐️
@@ -2280,6 +2285,12 @@ kafka
   - 降低软件维护成本，提高代码可读性
 
 - 命名
+  - 为什么需要命名规范
+    - 为标识符提供附加的信息
+    - 使代码审核更有效率
+    - 提高代码的清晰度和可读性
+    - 避免不同产品之间的命名冲突
+  
   - 哪些地方命名
     - 项目名、模块名、包名、对外暴露的接口名、类名、函数名、变量名、参数名
     - 重点：见名知意
@@ -2295,6 +2306,7 @@ kafka
   - XO命令
     - 数据库 BO、PO
     - 业务逻辑 
+  
 - 注释
   - 注释到底该写什么
     - 是什么功能、为什么这么做、如何做的
@@ -3229,7 +3241,7 @@ SOA
 
 ## 系统设计
 
-## 设计方案
+## 最佳实践
 
 ### 通用设计方案
 
@@ -3239,10 +3251,9 @@ SOA
   - SQL耗时统计   ✅
   - API 鉴权          
   - Error日志监控报警   ✅
+  - 接口幂等框架 ✅
 
 ID生成器
-
-接口幂等框架
 
 限流框架
 
