@@ -2623,9 +2623,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 - 模板模式的本质定义一个框架流程，具体的拓展点可以子类进行实现。具体的功能是复用和拓展，复用是指的是，所有的子类可以复用父类中提供的模板方法的代码，拓展是框架通过模板模式提供功能拓展点，用户不修改框架源码的情况下，基于拓展点就可以实现功能。
 - 回调方式
 - 应用场景
-  - jdbcTemplate、servlet
-  - jUnit 
-
+  - 拓展：jdbcTemplate、servlet、junit  
+  - 复用：abstractList、io流 
 
 **策略模式**
 
@@ -3259,6 +3258,10 @@ SOA
   - API 鉴权          
   - Error日志监控报警   ✅
   - 接口幂等框架 ✅
+- 自定义注解
+  - AOP  加解密  ✅
+  
+- spring retry 重试 ✅
 
 ID生成器
 
