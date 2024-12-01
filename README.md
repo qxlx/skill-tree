@@ -1488,10 +1488,20 @@ Bean生命周期
   - postProcessBeanFactory
     - 空实现
   - invokeBeanFactoryPostProcessors  ⭐️
+    - 核心 把业务相关注解的Bean 解析获取 生成BD
     - 调用BeanFactoryPostProcessor (修改BD 信息)
     - BeanDefinitionRegistryPostProcessor 
     - ConfigurationCLassPostProcessor 
-      - 根据注解找到bean的注册，生成BD，注册BeanFactory BDMap
+      - postProcessBeanDefinitionRegistry
+        - 根据注解找到bean的注册，生成BD，注册BeanFactory BDMap
+    - invokeBeanFactoryPostProcessors
+      - postProcessBeanFactory
+        - enhanceConfigurationClasses
+          - 为所有@Configuration 修饰的配置bean 应用时会生成代理对象使用
+          - 因为配置Bean没有实现任何接口，创建代理的过程中，基于Cglib的形式
+        - 为什么要对配置bean 要进行代理的处理呢？
+          - 通过代理可以为@confiruration 注解中的方法 增加@scope相关的功能
+        - 替换BD的beanClass  AppConfig 添加一个代理对象，添加拦截器，设置回调， 这个方法只是代理的@Configuration的配置的BD 
   - registerBeanPostProcessors  ⭐️
   - onRefresh 
   - finishBeanFactoryInitialization  ⭐️
