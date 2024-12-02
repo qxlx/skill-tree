@@ -60,7 +60,7 @@
   - 写好代码的书籍
   - 代码大全、代码整洁之道、架构整洁之道、重构、编写可读代码的艺术、程序员职业素养、代码的未来、领域驱动设计
 - 专栏
-  - 左耳听风、郭东白的架构课
+  - 左耳听风、郭东白的架构课、周志明的架构课
   - 性能优化-专栏
 - 设计方案学习-落地的
   - Java 错误100例
@@ -1488,6 +1488,17 @@ Bean生命周期
   - postProcessBeanFactory
     - 空实现
   - invokeBeanFactoryPostProcessors  ⭐️
+    - 作用：把所有的BeanFactoryPostProcessor 以及BeanDefinitionRegistryPostProcessor的类型，进行注册 并进行调用
+    - 1.内置
+      - BeanDefinitionRegistryPostProcerror  priorityOrdered
+        - ConfigurationClassPostProcessor
+      - BeanFactoryPostProcessor
+        - EventListenerMethodProcessor  
+    - 2.add方法添加的
+      - Add 没有注册的 -BD-Map中   但是会执行
+      - 不会注册的原因 是 注册工厂 需要new 对象，通过add 的方式 已经new了
+    - 3.@component注解添加
+      - 会执行 也会注册
     - 核心 把业务相关注解的Bean 解析获取 生成BD
     - 调用BeanFactoryPostProcessor (修改BD 信息)
     - BeanDefinitionRegistryPostProcessor 
@@ -1501,7 +1512,11 @@ Bean生命周期
           - 因为配置Bean没有实现任何接口，创建代理的过程中，基于Cglib的形式
         - 为什么要对配置bean 要进行代理的处理呢？
           - 通过代理可以为@confiruration 注解中的方法 增加@scope相关的功能
-        - 替换BD的beanClass  AppConfig 添加一个代理对象，添加拦截器，设置回调， 这个方法只是代理的@Configuration的配置的BD 
+        - 替换BD的beanClass  AppConfig 添加一个代理对象，添加拦截器，设置回调， 这个方法只是代理的@Configuration的配置的BD
+      -  添加BFPP的几种方式
+        - 默认提供的   ConfigurationCLassPostProcessor
+        - ctx.addBeanFactoryPostProcessor(xxx)
+        - 程序员自己的添加的 @Compent
   - registerBeanPostProcessors  ⭐️
   - onRefresh 
   - finishBeanFactoryInitialization  ⭐️
@@ -3655,9 +3670,15 @@ CR
   - 技术广度：环式学习法
   - 保证效果：Play 学习法、Teach 学习法
 - 学习能力
+  - 积累、智商、性格
+
 - 学习心态
 - 学习本质
+  - 锻炼能力、提高认知、选择赛道
+
 - 终身学习
+  - 扎根、
+
 
 ## 技术
 
