@@ -15,26 +15,31 @@
 
 学习计划进度表
 
-| 科目           | 进度 |
-| -------------- | ---- |
-| MySQL          | ✅✅✅  |
-| Redis          | ✅✅✅  |
-| Kafka          | ✅    |
-| 分布式系统     | ✅    |
-| 操作系统       | ✅    |
-| 网络           | ✅    |
-| JUC            | ✅✅✅  |
-| Spring         | ✅✅✅  |
-| JVM            | ✅✅✅  |
-| Netty          | ✅    |
-| 云原生         | ⭐️    |
-| 软件设计       | ✅    |
-| 源码解析       | ✅    |
-| 性能优化       | ⭐️    |
-| 算法           | ❎    |
-| Go、面试相关   |      |
-| nginx、es      |      |
-| Python、大数据 |      |
+
+
+| 科目             | 进度 | 重点深入 | 备注 |
+| ---------------- | :--- | -------- | ---- |
+| MySQL            | ✅✅✅  | ⭐️⭐️⭐️      |      |
+| Redis            | ✅✅✅  |          |      |
+| Kafka            | ✅    | ⭐️⭐️⭐️      |      |
+| 分布式系统       | ✅    | ⭐️⭐️⭐️⭐️⭐️    |      |
+| 操作系统         | ✅    |          |      |
+| 网络             | ✅    |          |      |
+| JUC              | ✅✅✅  | ⭐️⭐️⭐️⭐️⭐️    |      |
+| Spring           | ✅✅✅  | ⭐️⭐️⭐️⭐️⭐️    |      |
+| JVM              | ✅✅✅  |          |      |
+| Netty            | ✅    |          |      |
+| 云原生           | ⭐️    |          |      |
+| 软件设计         | ✅    | ⭐️⭐️⭐️⭐️⭐️    |      |
+| 源码解析         | ✅    |          |      |
+| Dubbo            | ❎    | ⭐️⭐️⭐️⭐️⭐️    |      |
+| RocketMQ、AutoMQ | ❎    | ⭐️⭐️⭐️⭐️⭐️    |      |
+| XXL-job          | ❎    |          |      |
+| 性能优化         | ⭐️    |          |      |
+| 算法             | ❎    |          |      |
+| Go、面试相关     |      |          |      |
+| nginx、es        |      |          |      |
+| Python、大数据   |      |          |      |
 
 25年
 
@@ -43,6 +48,7 @@
   - Dubbo  ⭐️
   - JUC   ⭐️
   - MyBatis  ⭐️
+  - RocketMQ / AutoMQ ⭐️
 
 - 新知识
 
@@ -1518,6 +1524,15 @@ Bean生命周期
         - ctx.addBeanFactoryPostProcessor(xxx)
         - 程序员自己的添加的 @Compent
   - registerBeanPostProcessors  ⭐️
+    - 注册BeanPostProcessors, 实例话BPP , 本过程会创建BPP的对象，
+      - BFPP 修改的是BD信息
+      - BPP 修改的是Bean对象
+    - 该过程仅仅是注册 不会实际调用。在bean实例话的时候 才会调用
+      - spring 内置
+        - AutowiredAnnotationBeanPostProcessor
+        - CommonAnnotationBeanPostProcessor
+      - 程序员添加的
+        - Add  (ApplicationContextAwareProcessor、ConfiguatiionClassPostProcessor#importAware、ApplicationListenerDetector)
   - onRefresh 
   - finishBeanFactoryInitialization  ⭐️
 - 实例化
@@ -2665,6 +2680,7 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
   - 利用查表法，或者存储Class对象，利用反射调用方法。
   - 设计原则和思想其实比设计模式更加普适和重要，掌握了代码的设计原则和思想，比设计模式更重要
   - 设计原则和思想是高层次的理论和指导原则，设计模式是根据经验总结出来的编程范式
+  - 要看场景 如果简单的if esle 逻辑 避免过度设计
 - 应用场景
   - 文件排序 进行策略化
   - spring aop proxy的选择
