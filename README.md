@@ -1533,6 +1533,7 @@ Bean生命周期
         - CommonAnnotationBeanPostProcessor
       - 程序员添加的
         - Add  (ApplicationContextAwareProcessor、ConfiguatiionClassPostProcessor#importAware、ApplicationListenerDetector)
+    - 针对 enableXX 都是通过import 完成注册 
   - onRefresh 
   - finishBeanFactoryInitialization  ⭐️
 - 实例化
