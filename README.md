@@ -1536,10 +1536,19 @@ Bean生命周期
     - 针对 enableXX 都是通过import 完成注册 
   - onRefresh 
   - finishBeanFactoryInitialization  ⭐️
+    - 通过spring的beanFacpty创建单例对象
+    - 前置准备工作
+      - 1.准备BD -> @ConfiruationClassPostProcessor -> BFPP
+      - 2.准备 BPP
+        - @AutowiedAnnotationBeanPostProcessor
+        - @Common
+        - 需要解决 @Value @Autowired @Resource @PostConstuct @PreDestory 注解  
 - 实例化
   - 通过反射的方式 创建对象
 - 属性注入
-  - set xml 、 注解 
+  - set xml 、 注解  不同的处理方式  
+  - postProcessProperties   找到属性
+  - postProcessPropertyValues  属性赋值
 - 初始化-循环依赖
   - 拓展点
 - 使用
@@ -1554,10 +1563,32 @@ Bean生命周期
 AOP原理
 
 - AOP核心概念
+  - 代理模式：通过代理类 为原始类 增加目标功能
+  - 好处：目标类的更好的维护
+
 - 创建AOP准备工作
+  - 原始对象 只做核心功能 service
+  - 额外功能
+    - 柑橘运行时机 添加额外功能
+
+  - 切入点
+    - 额外功能增加给那些原始方法，切入点决定
+
+  - 切面
+    - XML Advisor
+    - Aspect @Aspect  
+
 - JDK动态代理原理
 - Cglib原理
 - AOP动态代理的实现流程
+  - Spring负责原始对象的创建 通过，通过引入一个BPP 去影响bean的创建
+    - @EnableApsectjAutoProxy
+    - `AnnotationAwareAspectJautoProxyCreator`
+    - 初始化阶段执行的
+
+  - 为什么通过postProcessor 创建AOP 
+    - 更具备语意化
+
 
 事务原理
 
@@ -2715,6 +2746,10 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 - 适配器VS门面模式
   - 适配器模式注重的是兼容性，而门面模式注重的是易用性
 - 装饰者VS代理模式
+  - 从UML的角度看两者是相同的
+  - 区别：代理是增强的是额外功能的增强，装饰器是本职功能的增强
+  - eg：注册方法发送邮件，注册方法 添加
+
 
 ## 大型项目
 
