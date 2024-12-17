@@ -1606,7 +1606,34 @@ AOP原理
   - 声明式：AOP Proxy代理模式 配置文件 或者注解方式
 - 事务属性
   - 隔离属性 isolation
-  - 传播属性 
+    - 主要解决的是事务的并发，默认ISOLATION_DEAULT 数据库默认设置 传播属性，作为spring事务的默认属性
+      - Read_UNCOMMITED 读取另一个事务未提交的数据 - 脏读
+      - Read_COMMITED 读取已提交数据
+      - REPEATBLE_READ 不可重复读
+      - SERILZABLE = 幻读的问题
+  - 传播属性 propagation。 解决事务嵌套问题
+    - **REQUIRED** 当前的这个业务方法 外部没有事务 就开启事务，外部存在事务 则融合
+    - **REQUIRED_NEW**  当前的这个业务方法 外部没有事务 就开启事务 , 外部存在事务，开启一个新事务，执行完新的事务，还原外部事务继续执行
+    - MANDATORY 当前这个业务方法外部必须存在事务
+    - NEVER 当前的这个业务方法 外部一定不能存在事务
+    - **SUPPORED**  当前这个业务方法 外部没有事务部 不开启事务，外存存在事务，则融合
+    - NOT_SUPPERTS  当前这个业务方法 外部没有事务部不开启事务，外存存在事务，则抛异常
+    - NESTED  内嵌事务
+  - 超时
+    - 超时属性 通过超时属性 设置本事务 最长一个等待时间-1 数据库底层决定等待时间
+  - 只读
+    - 设置事务为只读，提高事务运行的效率 false
+  - 异常
+    - RuntimeException 及其子类。默认回滚
+    - Exception 及其子类 默认提交
+  - 隔离级别、传播属性、超时 是不同厂商的支持
+  - 源码剖析
+    - 1.事务是依赖于AOP BPP的过程修改的
+    - 2.Spring 事务的底层 依附于DataSource -> connection -> ThreadLocal中  开启 回滚 提交
+    - 3.额外功能
+      - DataSourceTransactionManager (PlatformTransactionManager) JDBC Mybatis
+      - TransactionAttributes
+    - 1.BPP 创建代理
 
 IOC原理-刷新方法
 
