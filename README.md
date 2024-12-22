@@ -46,8 +46,8 @@
 
 - 源码系列
 
-  - JUC   （1-3）⭐️
-  - MyBatis  (4-5) ⭐️
+  - MyBatis  (1-2) ⭐️
+  - JUC（3-4-5）⭐️
   - RocketMQ / AutoMQ ⭐️
   - Dubbo  ⭐️
 
@@ -1777,11 +1777,13 @@ sentinel
 ## MyBatis
 
 - 整合Spring
-  - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现类
+  - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现
+- 开源项目学习
+  - github.com/jd-opensource/sql-analysis
 
 ## Guava
 
-
+## Hutool
 
 # 四.中间件
 ## RPC/注册中心
