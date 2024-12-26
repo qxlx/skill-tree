@@ -1777,6 +1777,11 @@ sentinel
 ## MyBatis
 
 - 整体架构
+
+  ![image-20241226224002342](https://raw.githubusercontent.com/qxlx/mypic/test/test/image-20241226224002342.png)
+
+![image-20241226224152799](https://raw.githubusercontent.com/qxlx/mypic/test/test/image-20241226224152799.png)
+
 - Mybatis
   - 存储数据类对象
     - Configuration
