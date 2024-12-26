@@ -67,7 +67,7 @@
   - 写好代码的书籍
   - 代码大全、代码整洁之道、架构整洁之道、重构、编写可读代码的艺术、程序员职业素养、代码的未来、领域驱动设计
 - 专栏
-  - 左耳听风、郭东白的架构课、周志明的架构课、李智慧 高并发架构实战课
+  - 左耳听风、郭东白的架构课、周志明的架构课、李智慧 高并发架构实战课、从0开始学大数据
   - 性能优化-专栏
 - 设计方案学习-落地的
   - Java 错误100例
@@ -1775,6 +1775,45 @@ sentinel
 - 高性能无锁队列 Mpsc Queue
 
 ## MyBatis
+
+- 整体架构
+- Mybatis
+  - 存储数据类对象
+    - Configuration
+         - 概念：在Java中（JVM)对Mybatis相关的配置信息进行封装
+         - mybatis-config.xml ----> Configuration 
+         - 1.封装了mybatis-config.xml
+         - 2.封装了mapper 文件  MappedStatement
+         - 3.创建Mybatis其他相关的对象 
+    - MappedStatment
+      - XXXDAOMapper.xml ----> MappedStatement
+      -  MappedStatment 中 封装SQL语句 ---> BoundSql
+  - 操作类对象
+    - Executor 
+      - 为什么是一个接口
+        - 操作相关的类型 设计成接口，方便后期进行拓展
+        - BaseExecutor 抽象类
+          - SimpleExecutor 常用的
+          - BatchExecutor.  JDBC 批处理操作  提升效率
+          - ReuseExecutor  目的：复用Statement 也就是SQL语句
+      - 处理功能的核心
+      - 1.增删改 update 查query
+      - 2.事务操作 提交 回滚
+      - 3.缓存相关的操作
+    - StatmentHandler
+      - 封装JDBC statement 真正mybait进行数据库访问操作的核心, 
+      - 功能 增删改查
+      - SImpleStamementHander
+    - ParamerterHandler
+      - 目的 mybatis参数 -> jdbc相关的参数。   @Param-> ${} -> ?
+    - ResultSetHandler
+      - 目的 对JDBC中查询结果集 ResultSet进行封装
+    - TypeHandler
+      - Java程序操作 数据库
+      - java类型 string\varchar  int \ number 类型转换
+      - 入参-> java对象类型 转换成 mysql类型
+      - 返回值 > mysql类型 转换成java对象
+  - Mybatis的核心对象 如何与SqlSession建立的联系？
 
 - 整合Spring
   - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现
@@ -3774,6 +3813,17 @@ CR
 ## 12.产品篇
 
 ## 13.商业思维篇
+
+企业管理者站在企业家的角度，从整体利益出发，化简为繁，以终为始，快速准确作出商业决策。
+
+- 系统思维
+- 销售思维
+- 财务思维
+- 商业敏感度
+
+资产负债表
+
+资产= 负债+ 所有者权益 
 
 ## 14.管理认知演进篇
 
