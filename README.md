@@ -71,6 +71,9 @@
   - 性能优化-专栏
 - 设计方案学习-落地的
   - Java 错误100例
+- 其他
+  - 陈天宇宙L2全能营，系统的支付理论体系课   
+  - 系统学习支付业务
 
 # **一.基础学科**
 
@@ -1819,11 +1822,34 @@ sentinel
       - 入参-> java对象类型 转换成 mysql类型
       - 返回值 > mysql类型 转换成java对象
   - Mybatis的核心对象 如何与SqlSession建立的联系？
+    - UserDao接口的实现类的对象 如何生成的 
+      - a.为原始对象 目标 增加额外功能  SpringAOP 事务 日志等
+      - b.远程代理  Dubbo  1.网络通信 2.输出传输 RPC
+      - c.无中生有 接口实现类，看不到类文件，运行时可以体现出来
+    - 动态字节码技术，类在JVM 运行时创建，JVM运行结束后 消失了。
+      - 如何创建这个实现类
+      - 实现类如何
+        - Sqlsession.select("namespace.id",参数)
+        - Excutor
+        - StatementHandler
+        - ParameterHandler| ResultSetHandler
+        - TypeHandler
+  - MapperProxy 实现 InvocationHandler
+    - Invoke 
+      - xxx
+      - MapperProxyFactory (创建JDK 动态代理的实现类)
+    - SQLCommand
+      - id = namespace.id
+      - type = insert | delete | select 
+      - SQLSession.insert() | SQLSession.update 
+    - MethodSignature 参数 返回值
 
 - 整合Spring
   - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现
 - 开源项目学习
   - github.com/jd-opensource/sql-analysis
+- 源码系列
+  - 
 
 ## Guava
 
@@ -4076,3 +4102,49 @@ CR
 - 设计模式、head first设计模式、java与模式
 - 
 
+
+
+# 金融
+
+## 经济学原理
+
+### 01.什么是经济学
+
+微观经济学
+
+- 1.人们如何做出决策
+- 2.人们如何相互作用
+
+宏观经济学
+
+- 3.整体经济如何运行
+
+
+
+经济学的十个原理
+
+- 做决策
+  - 1.人们面临得失交换，权衡取舍- tradeoff
+    - 天下没有免费的午餐
+  - 2.某物的成本是为此所放弃的东西
+    - 某物的**机会成本**是为了得到它而放弃的东西 
+  - 3.理性人思考边际量  普通人思考的是平均值
+  - 4.人们会对激励做出反应
+- 相关作用
+  - 5.贸易或交换使人人受益 - trade
+  - 6.市场通常是组织经济活动的好方式-markets
+  - 7.政府优势可以改进市场结果-governments
+- 整体运行
+  - 8.一国的生活水平取决于它的生产-producting
+  - 9.政府发行过多货币，物价上涨
+  - 10.社会面临通货膨胀和失业之间的短期得失交换 
+
+# 历史
+
+# 政治
+
+# 心理学
+
+# 法律
+
+# 管理学
