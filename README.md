@@ -1843,6 +1843,30 @@ sentinel
       - type = insert | delete | select 
       - SQLSession.insert() | SQLSession.update 
     - MethodSignature 参数 返回值
+  - `mybatis-config.xml -> 转换成 confiuration对象`
+    - 程序如何解析XML
+      - 读取xml相关的内容 获取标签内容后，封装成java对象
+      - XML解析几种方式：DOM、SAX、XPath(myabtis)
+      - XPathParser  -> XNode对象
+  - `SqlSessioFactory ssf = new SqlSesionFactoryBuilder().build(is)`
+    - `parseConfiguration(parser.evalNode("/configuration"));`
+      - 解析成configuration对象
+    - `mapperElement(root.evalNode("mappers"));`
+      - 读取mapper文件 解析成mapperStatement对象
+    - 创建默认的sqlSessionFactory对象
+  - `SQLsession sqlSession = ssf.openSession()`
+    - 
+  - `UserDao userDao = sqlsession.getMapper(UserDao.class) `
+  - `userdao.save()`
+  - MapperProxyFactory
+    - InvocationHandler -> MapperProxy
+      - SqlCommand
+      - MethodSingnature
+        - sql.sesion.update
+          - Exectour
+            - statementHandler
+              - ParameterHandler | resultSetHandler
+                - TypeHandler
 
 - 整合Spring
   - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现
