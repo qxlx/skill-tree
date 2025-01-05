@@ -1855,7 +1855,6 @@ sentinel
       - 读取mapper文件 解析成mapperStatement对象
     - 创建默认的sqlSessionFactory对象
   - `SQLsession sqlSession = ssf.openSession()`
-    - 
   - `UserDao userDao = sqlsession.getMapper(UserDao.class) `
   - `userdao.save()`
   - MapperProxyFactory
@@ -1872,8 +1871,16 @@ sentinel
   - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现
 - 开源项目学习
   - github.com/jd-opensource/sql-analysis
-- 源码系列
-  - 
+- 源码
+  - mybatis核心运行源码分析
+  - 缓存 -> 置换算法 (LRU、FIFO)
+    - 分类  
+      - ORM框架 集成缓存  Hibernate mybatis 
+      - 第三方中间件 redis\memcache  自研的方式(redis ssd)
+    - 如何处理这种冗余的代码 
+      - 通过动态代理方式
+  - mybatis与spring集成
+  - mybatis的插件
 
 ## Guava
 
@@ -2808,6 +2815,7 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
   - 解决的是继承关系过于复杂的问题，通过组合的方式来代替继承，主要是给原始类添加增加功能
 - 应用场景
   - spring bean的包装  任务的包装、IO类的包装
+  - Mybatis缓存 cache的多个包装类LRU FIFOCache等
   
 
 **适配器模式**
@@ -2910,6 +2918,8 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
 - 装饰者VS代理模式
   - 从UML的角度看两者是相同的
   - 区别：代理是增强的是额外功能的增强，装饰器是本职功能的增强
+  - 装饰器 增强核心功能 和被装饰对象做的事同一件事
+  - 代理  增强额外功能 和被代理对象做的不是一件事
   - eg：注册方法发送邮件，注册方法 添加
 
 
@@ -4154,6 +4164,7 @@ CR
     - 某物的**机会成本**是为了得到它而放弃的东西 
   - 3.理性人思考边际量  普通人思考的是平均值
   - 4.人们会对激励做出反应
+    - 成本和收益的边际量变化促使人们做出反应
 - 相关作用
   - 5.贸易或交换使人人受益 - trade
   - 6.市场通常是组织经济活动的好方式-markets
@@ -4162,6 +4173,14 @@ CR
   - 8.一国的生活水平取决于它的生产-producting
   - 9.政府发行过多货币，物价上涨
   - 10.社会面临通货膨胀和失业之间的短期得失交换 
+
+### 02 向经济学家一样思考
+
+经济学两大方向
+
+- 科学研究
+  - 观察-> 理论 -> 进一步观察
+- 政策指导
 
 # 历史
 
