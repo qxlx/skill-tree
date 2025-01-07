@@ -1866,6 +1866,13 @@ sentinel
             - statementHandler
               - ParameterHandler | resultSetHandler
                 - TypeHandler
+- 缓存机制
+  - 一级缓存
+    - SQLSession级别
+  - 二级缓存
+    - 全局缓存
+  - 源码过程
+  - 装饰器模式 cache接口
 
 - 整合Spring
   - DataSource->SqlSessionFactory-> @MapperScanner  动态代理 生成Mapper代理实现
@@ -2921,6 +2928,10 @@ Law of Demeter，迪米特法则 (Law of Demeter)原则
   - 装饰器 增强核心功能 和被装饰对象做的事同一件事
   - 代理  增强额外功能 和被代理对象做的不是一件事
   - eg：注册方法发送邮件，注册方法 添加
+
+- 构建者VS工厂模式
+  - 构建者是针对一个复杂对象的过程
+  - 工厂模式是针对相同类不同对象的创建
 
 
 ## 大型项目
