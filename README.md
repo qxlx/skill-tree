@@ -1654,14 +1654,21 @@ springbootstart加载原理
 
 Nacos
 
-- 服务注册与发现 核心流程 源码
-- 配置中心的使用
+- 服务注册与发现 核心流程原理
+  - 服务注册流程
+  - 健康检查
+  - 心跳
+  - 服务发现
+
+- 配置中心的原理
+  - 配置结构， namespace\group\data-id
+
 
 OpenFeign
 
-Gateway
-
 sentinel
+
+seata
 
 ## Netty
 
